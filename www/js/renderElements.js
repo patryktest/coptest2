@@ -196,7 +196,7 @@ function renderGroupChatWindow(id) {
     var lastSender = '';
     var lastSendTime = '';
     var group = getGroupById(id);
-    //console.info(group);
+    console.info(group);
     $('#groupChatPageT').html(group.displayGroupName);
 
     if (group !== null) {

@@ -35,7 +35,7 @@ function isUserInGroup(idUser,idGroup){
     if(group!==null){
         var users= group.users;
         for(var i=0;i<users.length;i++){
-            //console.log('userID: '+idUser+' users in group'+users[i].id);
+            console.log('userID: '+idUser+' users in group'+users[i].id);
             if(users[i].id===idUser)
                 return true;
         }
@@ -73,7 +73,7 @@ function groupLeader(idGroup){
 function checkUpdateGroupName(idGroup){
     group = getGroupById(idGroup);
     group.displayGroupName = group.groupName;
-    //console.info(group);
+    console.info(group);
     
     if(group.groupName===group.groupLeader.name)
         group.displayGroupName = group.groupLeader.name+ ' + '+ (group.users.length-1);

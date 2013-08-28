@@ -55,15 +55,10 @@ function sendPrivateMessage(message) {
     else{
         if(getActiveConverastion()==="")
             //console.log('ERR send private message: friend ID missing');
-<<<<<<< HEAD
-        if(!message)
-            //console.log('ERR send private message: message missing');
-=======
                 alert('ERR send private message: friend ID missing');
         if(!message)
             //console.log('ERR send private message: message missing');
                 alert('ERR send private message: message missing');
->>>>>>> news
     }
         
 

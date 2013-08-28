@@ -16,10 +16,6 @@ $(function() {
 
     $('#inputPrivateMessage').keydown(function(e) {
         if (e.keyCode === 13) {
-<<<<<<< HEAD
-            //console.log(e.keyCode);
-=======
->>>>>>> news
             var msg = $(this).val();
             if (!msg) {
                 return;
@@ -32,10 +28,6 @@ $(function() {
 
     $('#inputGroupMessage').keydown(function(e) {
         if (e.keyCode === 13) {
-<<<<<<< HEAD
-            //console.log(e.keyCode);
-=======
->>>>>>> news
             var msg = $(this).val();
             if (!msg) {
                 return;
@@ -106,15 +98,10 @@ function updateFriendStatus(id, status) {
         friend.status = status;
         $('#chatListT #friend_list_' + id + ' span.user-status-icon').removeClass().addClass('user-status-icon ui-icon-' + status + ' device-mobile');
     }
-<<<<<<< HEAD
-    else
-        //console.log('friend status: user not exist');
-=======
     else{
         //console.log('friend status: user not exist');
     }
         
->>>>>>> news
 
 }
 
@@ -192,10 +179,6 @@ function removeGroupFromMainList(id) {
 
 
 function onAddToFriendGroup() {
-<<<<<<< HEAD
-    //console.log('friend create group');
-=======
    // console.log('friend create group');
->>>>>>> news
 }
 

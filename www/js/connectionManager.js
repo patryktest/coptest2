@@ -34,14 +34,14 @@ function connect() {
         connection = new WebSocket(WEBSOCKETLINK);
     }
     catch (e){
-        //console.log(e);
+        console.log(e);
     }
     
 
 
     connection.onopen = function() {
         statusOnConnect.text('Connected');
-        //console.log('connected to ws');
+        console.log('connected to ws');
        // $('#loginButton').removeClass('ui-disabled');
        $('#loginButton').button('enable');
        $('#loginButton').button( "refresh" );
@@ -53,7 +53,7 @@ function connect() {
         onLogout();
         statusOnConnect.text('Not Connected');
         // an error occurred when sending/receiving data
-        //console.log(error);
+        console.log(error);
        // alert(error);
        $('#loginButton').button('disable');
        $('#loginButton').button( "refresh" );
@@ -64,10 +64,10 @@ function connect() {
         try {
             var json = JSON.parse(message.data);
         } catch (e) {
-            //console.log('This doesn\'t look like a valid JSON: ', message.data);
+            console.log('This doesn\'t look like a valid JSON: ', message.data);
             return;
         }
-        //console.log(json);
+        console.log(json);
 
         switch (json.type) {
             case 'SERVER_LOGIN':

@@ -17,25 +17,25 @@ function responseLogin(json) {
     for(var i=0;i<groupList.length;i++){
         checkUpdateGroupName(groupList[i].groupId);
     }
-    //console.log("responseLogin OK ");
-    //console.log(user);
+    console.log("responseLogin OK ");
+    console.log(user);
     if (user !== null) {
         onUserLogin();
     }
     else {
-        //console.log('ERR: user is null after LOGIN');
+        console.log('ERR: user is null after LOGIN');
     }
 }
 
 function responseLogout(json) {
-    //console.log('responseLogout: OK');
+    console.log('responseLogout: OK');
 }
 
 function responseFriendListUpdate() {
 
 }
 function responseGroupClose(json) {
-    //console.log('responseGroupClose: OK');
+    console.log('responseGroupClose: OK');
     for (var i = 0; i < user.groupList.length; i++) {
         if (user.groupList[i].groupId === json.data.groupId)
             user.groupList.splice(i, 1);
@@ -46,7 +46,7 @@ function responseGroupClose(json) {
 
 }
 function responseGroupInfo(json) {
-    //console.log('responseGroupInfo: OK');
+    console.log('responseGroupInfo: OK');
     group = getGroupById(json.data.groupId);
     if (group) {
         for (var i = 0; i < user.groupList.length; i++) {
@@ -55,7 +55,7 @@ function responseGroupInfo(json) {
         }
         
         
-        //console.info(group);
+        console.info(group);
         checkUpdateGroupName(json.data.groupId);
     }
     else {
@@ -80,7 +80,7 @@ function responseGroupInfo(json) {
  * response after adding user to group
  */
 function responseGroupJoin(json) {
-    //console.log('responseGroupJoin: OK');
+    console.log('responseGroupJoin: OK');
     for (var i = 0; i < user.groupList.length; i++) {
         if (user.groupList[i].groupId === json.data.groupId){
             user.groupList[i].users.push(json.data.user);
@@ -89,21 +89,21 @@ function responseGroupJoin(json) {
             
         
     }
-    //console.log(user);
+    console.log(user);
 }
 
 function responseGroupLeave(json) {
-    //console.log('responseGroupLeave: OK');
+    console.log('responseGroupLeave: OK');
     if (removeUserFromGroup(json.data.id, json.data.groupId)){
-        //console.log('user with id:' + json.data.id + ' leaved group');
+        console.log('user with id:' + json.data.id + ' leaved group');
         checkUpdateGroupName(json.data.groupId);
     }
     else
-        //console.log('ERROR in leave group');
-    //console.log(user);
+        console.log('ERROR in leave group');
+    console.log(user);
 }
 function responseGroupMessage(json) {
-    //console.log('responseGroupMessage: OK');
+    console.log('responseGroupMessage: OK');
     group = getGroupById(json.data.groupId);
     if (group) {
         group.history.push(json.data);
@@ -126,18 +126,18 @@ function responseGroupMessage(json) {
  * after open new private conversation
  */
 function responsePrivateHistory(json) {
-    //console.log('responsePrivateHistory: OK');
+    console.log('responsePrivateHistory: OK');
     for (var i = 0; i < user.friendList.length; i++) {
         if (user.friendList[i].id === getActiveConverastion())
             user.friendList[i].history = json.history;
     }
-    //console.log(user.friendList);
+    console.log(user.friendList);
     addNewConversation(getActiveConverastion());
     onOpenPrivateChatWindow(getActiveConverastion());
 }
 
 function responsePrivateMessageNew(json) {
-    //console.log('responsePrivateMessageNew: OK');
+    console.log('responsePrivateMessageNew: OK');
     friend = getFriendById(json.data.senderId);
     friend.history.push(json.data);
     if (json.data.senderId === getActiveConverastion()) {
@@ -151,7 +151,7 @@ function responsePrivateMessageNew(json) {
 
 }
 function responsePrivateMessageSent(json) {
-    //console.log('responsePrivateMessageSent: OK');
+    console.log('responsePrivateMessageSent: OK');
     friend = getFriendById(json.data.receiverId);
     friend.history.push(json.data);
     $('#inputPrivateMessage').val('');
@@ -161,14 +161,14 @@ function responsePrivateMessageSent(json) {
 
 function responseStatusUpdate(json) {
     if (json.result === "OK") {
-        //console.log('responseStatusUpdate OK');
+        console.log('responseStatusUpdate OK');
         setUserStatus(global_status);
     }
     else if (json.userId) {
         updateFriendStatus(json.userId, json.chatStatus);
     }
     else
-        //console.log('responseStatusUpdate ERR result: ' + json.result);
+        console.log('responseStatusUpdate ERR result: ' + json.result);
 
 
 }
