@@ -14,7 +14,7 @@ $(function() {
     if (user)
         window.location = '#loginPage';
 
-    $('#inputPrivateMessage').keydown(function(e) {
+   /* $('#inputPrivateMessage').keydown(function(e) {
         if (e.keyCode === 13) {
             var msg = $(this).val();
             if (!msg) {
@@ -36,7 +36,7 @@ $(function() {
             sendGroupMessage(getActiveGroupChat(), msg);
         }
         ;
-    });
+    });*/
     
     
     
