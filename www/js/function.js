@@ -14,17 +14,7 @@ $(function() {
     if (user)
         window.location = '#loginPage';
 
-    $('#inputPrivateMessage').keydown(function(e) {
-        if (e.keyCode === 13) {
-            var msg = $(this).val();
-            if (!msg) {
-                return;
-            }
-           
-            sendPrivateMessage(msg);
-        }
-        ;
-    });
+    
 
     $('#inputGroupMessage').keydown(function(e) {
         if (e.keyCode === 13) {
