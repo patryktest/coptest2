@@ -1,22 +1,7 @@
 function responseLogin(json) {
-    friendList = new Array();
-    for (var i = 0; i < json.friendList.length; i++) {
-        friendList.push(createFriend(json.friendList[i].id, json.friendList[i].name, json.friendList[i].newMessages, json.friendList[i].status));
-    }
-    groupList = new Array();
-    groupList = json.groupList;
+        
+    user = new User(json.user.id, json.user.name, user_status.online, json.friendList, json.groupList, json.lastConversation);
     
-
-    user = {
-        id: json.user.id,
-        name: json.user.name,
-        friendList: friendList,
-        groupList: groupList,
-        status: available
-    };
-    for(var i=0;i<groupList.length;i++){
-        checkUpdateGroupName(groupList[i].groupId);
-    }
     console.log("responseLogin OK ");
     console.log(user);
     if (user !== null) {
@@ -36,40 +21,36 @@ function responseFriendListUpdate() {
 }
 function responseGroupClose(json) {
     console.log('responseGroupClose: OK');
-    for (var i = 0; i < user.groupList.length; i++) {
-        if (user.groupList[i].groupId === json.data.groupId)
-            user.groupList.splice(i, 1);
-    }
-    removeGroupFromContactList(json.data.groupId);
-    removeGroupFromMainList(json.data.groupId);
+    user.removeGroup(json.data.groupId);
     onCloseGroupChatWindow();
 
 }
 function responseGroupInfo(json) {
     console.log('responseGroupInfo: OK');
-    group = getGroupById(json.data.groupId);
+    var group = user.getGroupById(json.data.groupId);
+    var nameChanged = false;
     if (group) {
-        for (var i = 0; i < user.groupList.length; i++) {
-            if (user.groupList[i].groupId === json.data.groupId)
-                user.groupList[i]= json.data;
-        }
-        
-        
+        nameChanged = group.update(json.data.groupId, json.data.groupLeader, json.data.groupName, json.data.groupStream,json.data.groupStreamStatus,json.data.history,json.data.limit,json.data.ongoingVideo,json.data.users);
         console.info(group);
-        checkUpdateGroupName(json.data.groupId);
+        if(mannage_group_name && nameChanged){
+            onOpenGroupChatWindow(getActiveGroupChat());
+            mannage_group_name = false;
+        }    
     }
     else {
-        user.groupList.push(json.data);
-        if (groupLeader(json.data.groupId)) {
+        var group = new Group(json.data.groupId, json.data.groupLeader, json.data.groupName, json.data.groupStream,json.data.groupStreamStatus,json.data.history,json.data.limit,json.data.ongoingVideo,json.data.users);
+        user.groupList.push(group);
+        if (group.isgroupLeader()) {
             setActiveGroupChat(json.data.groupId);
-            onGroupCreate();
+            onAfterGroupCreate();
         }
-        else
+        else{
             onAddToFriendGroup();
+            renderContactList();
+            updateRecentConversations(group);
+        }
             
-        checkUpdateGroupName(json.data.groupId);
-        renderContactList($('#contactListT'));
-        updateRecentConversations(json.data);
+        
     }
     
 
@@ -81,22 +62,18 @@ function responseGroupInfo(json) {
  */
 function responseGroupJoin(json) {
     console.log('responseGroupJoin: OK');
-    for (var i = 0; i < user.groupList.length; i++) {
-        if (user.groupList[i].groupId === json.data.groupId){
-            user.groupList[i].users.push(json.data.user);
-            checkUpdateGroupName(json.data.groupId);
-        }
-            
-        
-    }
+    var group = user.getGroupById(json.data.groupId);
+    if(group!==null)
+        group.addSelectedFriend(json.data.user);
     console.log(user);
 }
 
 function responseGroupLeave(json) {
     console.log('responseGroupLeave: OK');
-    if (removeUserFromGroup(json.data.id, json.data.groupId)){
+    var group = user.getGroupById(json.data.groupId);
+    
+    if (group.removeUser(json.data.id)){
         console.log('user with id:' + json.data.id + ' leaved group');
-        checkUpdateGroupName(json.data.groupId);
     }
     else
         console.log('ERROR in leave group');
@@ -104,22 +81,20 @@ function responseGroupLeave(json) {
 }
 function responseGroupMessage(json) {
     console.log('responseGroupMessage: OK');
-    group = getGroupById(json.data.groupId);
+    var group = user.getGroupById(json.data.groupId);
     if (group) {
         group.history.push(json.data);
-    }
-    if (json.data.groupId === getActiveGroupChat()) {
-        if (json.data.senderId === user.id) {
-            $('#inputGroupMessage').val('');
+        if (group.groupId === getActiveGroupChat()) {
+            if (json.data.senderId === user.id) {
+                $('#inputGroupMessage').val('');
+            }
+                addMessageToActiveGroupChat(group);
         }
-        addMessageToActiveGroupChat(getActiveGroupChat());
+        else {
+            group.newMessages++;
+            addRecentNotification('group',json.data);
+        }
     }
-    else {
-        //addRecentNotification(json.data);
-        // TODO: zobraz upozornenie o neprecitanej sprave
-    }
-
-
 }
 
 /*
@@ -127,45 +102,63 @@ function responseGroupMessage(json) {
  */
 function responsePrivateHistory(json) {
     console.log('responsePrivateHistory: OK');
-    for (var i = 0; i < user.friendList.length; i++) {
-        if (user.friendList[i].id === getActiveConverastion())
-            user.friendList[i].history = json.history;
-    }
-    console.log(user.friendList);
+    var friend = user.getFriendById(getActiveConverastion());
+    friend.updateHistory(json.history);
     addNewConversation(getActiveConverastion());
     onOpenPrivateChatWindow(getActiveConverastion());
 }
 
 function responsePrivateMessageNew(json) {
-    console.log('responsePrivateMessageNew: OK');
-    friend = getFriendById(json.data.senderId);
-    friend.history.push(json.data);
+    console.log('responsePrivateMessageNew: OK');    
+    var friend = user.getFriendById(json.data.senderId);
+    friend.addToHistory(json.data);    
     if (json.data.senderId === getActiveConverastion()) {
         updatePrivateChatWindow(getActiveConverastion());
-        updateRecentContactMessage(json.data.senderId, json.data.message);
+        confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.read);
+        friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.read);
     }
     else {
-        // TODO: zobraz upozornenie o neprecitanej sprave
-        addRecentNotification(json.data);
+        confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.delivered);
+        friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.delivered);
+        friend.newMessages++;
+        addRecentNotification('friend',json.data);
     }
 
 }
 function responsePrivateMessageSent(json) {
     console.log('responsePrivateMessageSent: OK');
-    friend = getFriendById(json.data.receiverId);
-    friend.history.push(json.data);
+    var friend = user.getFriendById(json.data.receiverId);
+    friend.addToHistory(json.data);
     $('#inputPrivateMessage').val('');
     updatePrivateChatWindow(getActiveConverastion());
-    updateRecentContactMessage(json.data.receiverId, json.data.message);
+}
+
+function responsePrivateMessageDelivered(json){
+    var friend = user.getFriendById(json.data.senderId);
+    friend.updateMessageStatus(json.data.timeId,json.type);
+}
+
+function responsePrivateMessageRead(json){
+    var friend = user.getFriendById(json.data.senderId);
+    friend.updateMessageStatus(json.data.timeId,json.type);
 }
 
 function responseStatusUpdate(json) {
     if (json.result === "OK") {
         console.log('responseStatusUpdate OK');
-        setUserStatus(global_status);
+        user.setUserStatus(global_status);
     }
     else if (json.userId) {
-        updateFriendStatus(json.userId, json.chatStatus);
+        var change_status = false;
+        for(var status in user_status){
+            if(json.chatStatus === user_status[status])
+                change_status = true;
+        }
+        if(change_status){ 
+            var friend = user.getFriendById(json.userId);
+            friend.updateStatus(json.chatStatus);
+            viewUpdateFriendStatus(friend);
+        }
     }
     else
         console.log('responseStatusUpdate ERR result: ' + json.result);
