@@ -83,16 +83,15 @@ function responseGroupMessage(json) {
     console.log('responseGroupMessage: OK');
     var group = user.getGroupById(json.data.groupId);
     if (group) {
-        group.history.push(json.data);
+        group.addToHistory(json.data);
         if (group.groupId === getActiveGroupChat()) {
             if (json.data.senderId === user.id) {
                 $('#inputGroupMessage').val('');
             }
-                addMessageToActiveGroupChat(group);
+                //addMessageToActiveGroupChat(group);
         }
         else {
-            group.newMessages++;
-            addRecentNotification('group',json.data);
+            group.setNewMessages('+');
         }
     }
 }
@@ -113,7 +112,6 @@ function responsePrivateMessageNew(json) {
     var friend = user.getFriendById(json.data.senderId);
     friend.addToHistory(json.data);    
     if (json.data.senderId === getActiveConverastion()) {
-        updatePrivateChatWindow(getActiveConverastion());
         confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.read);
         friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.read);
     }
@@ -121,7 +119,7 @@ function responsePrivateMessageNew(json) {
         confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.delivered);
         friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.delivered);
         friend.newMessages++;
-        addRecentNotification('friend',json.data);
+        friend.setNewMessages('+');
     }
 
 }
@@ -130,7 +128,6 @@ function responsePrivateMessageSent(json) {
     var friend = user.getFriendById(json.data.receiverId);
     friend.addToHistory(json.data);
     $('#inputPrivateMessage').val('');
-    updatePrivateChatWindow(getActiveConverastion());
 }
 
 function responsePrivateMessageDelivered(json){
@@ -157,7 +154,6 @@ function responseStatusUpdate(json) {
         if(change_status){ 
             var friend = user.getFriendById(json.userId);
             friend.updateStatus(json.chatStatus);
-            viewUpdateFriendStatus(friend);
         }
     }
     else
