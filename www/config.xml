@@ -37,6 +37,10 @@
   <license href="http://opensource.org/licenses/alphabetical">
   </license>
 
+  
+	<gap:platform name="android" />
+	<gap:platform name="blackberry" />
+
   <!-- Cordova API -->
   <feature id="blackberry.system" required="true" version="1.0.0.0" />
   <feature id="org.apache.cordova" required="true" version="1.0.0" />
@@ -76,6 +80,8 @@
   <icon rim:hover="false" src="res/icon/blackberry/icon-80.png" />
   <icon rim:hover="true" src="res/icon/blackberry/icon-80.png" />
 
+  <preference name="disable-cursor" value="true" />
+  <rim:navigation mode="focus"/>
   <rim:loadingScreen backgroundColor="#CFCFCF"
                      foregroundImage="res/screen/blackberry/screen-225.png"
 		     onFirstLaunch="true">
