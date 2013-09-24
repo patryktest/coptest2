@@ -19,12 +19,9 @@ function addRecentNotification(command, data) {
             updateRecentContactMessage(data.id, command, "new message");
             break;
         case 'group':
-            var group = user.getGroupById(data.groupId);
-            if (group !== null) {
-                $('#chatListT #group_list_' + group.id + ' span.ui-li-message-count').removeClass('hidden');
-                $('#chatListT #group_list_' + group.id + ' span.ui-li-message-count').html(group.newMessages);
-                updateRecentContactMessage(group.id, command, "new message");
-            }
+                $('#chatListT #group_list_' + data.groupId + ' span.ui-li-message-count').removeClass('hidden');
+                $('#chatListT #group_list_' + data.groupId + ' span.ui-li-message-count').html(data.newMessages);
+                updateRecentContactMessage(data.groupId, command, "new message");
             break;
 
 
@@ -37,10 +34,18 @@ function clearRecentNotification(command, item) {
         case 'friend':
             $('#chatListT #friend_list_' + item.id + ' span.ui-li-message-count').addClass('hidden');
             $('#chatListT #friend_list_' + item.id + ' span.ui-li-message-count').html(item.newMessages);
+            if(item.history.length>0)
+                updateRecentContactMessage(item.id, command, item.history[item.history.length-1].message);
+            else 
+                updateRecentContactMessage(item.id, command, '');
             break;
         case 'group':
             $('#chatListT #group_list_' + item.groupId + ' span.ui-li-message-count').addClass('hidden');
             $('#chatListT #group_list_' + item.groupId + ' span.ui-li-message-count').html(item.newMessages);
+            if(item.history.length>0)
+                updateRecentContactMessage(item.groupId, command, item.history[item.history.length-1].message);
+            else 
+                updateRecentContactMessage(item.groupId, command, '');
             break;
 
 

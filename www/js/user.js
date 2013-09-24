@@ -35,7 +35,9 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
     this.getFriendById = getFriendByIdF;
     this.getGroupById = getGroupByIdF;
     this.removeGroup = removeGroupF;
-    this.recentConversationElement = recentConversationElementF;
+    this.addGroup = addGroupF;
+    this.recentConversationElement = '';
+    this.recentConversationElementInit= recentConversationElementInitF;
 
 
     function setUserStatusF(stat) {
@@ -68,21 +70,32 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
         removeGroupFromMainList(id);
 
     }
+    
+    function addGroupF(group){
+        user.groupList.push(group);
+        this.recentConversationElement.appendChild(group.itemElement);
+        /*var element = $('#chatListT');
+        if ((element).hasClass('ui-listview')) {
+            //element.listview();
+            element.listview('refresh');
+        }*/
+    }
 
-    function recentConversationElementF() {
-        
-        var element = document.createElement('ul');
+    function recentConversationElementInitF() {
+       /* var element = document.createElement('ul');
         element.setAttribute('data-role','listview');
         element.setAttribute('id','chatListT');
-        
-
+        */
+       var element = new Array();
         for (var i = 0; i < this.friendList.length; i++) {
             if (this.friendList[i].recent) {
-                element.appendChild(this.friendList[i].itemElement);
+                //element.appendChild(this.friendList[i].itemElement);
+                element.push(this.friendList[i].itemElement);
             }
         }
         for (var i = 0; i < this.groupList.length; i++) {
-            element.appendChild(this.groupList[i].itemElement);
+            //element.appendChild(this.groupList[i].itemElement);
+            element.push(this.groupList[i].itemElement);
         }
         return element;
         

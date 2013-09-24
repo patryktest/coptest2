@@ -4,6 +4,8 @@ function onConnectionOpen(){
     console.log('connected to ws');
     $('#loginButton').button('enable');
     $('#loginButton').button( "refresh" );
+    //if(USER_ID!=null && USER_SESSION!=null)
+    //        commandLogin();
 }
 
 function onConnectionError(){
@@ -36,20 +38,19 @@ function onGoToMainPage(){
 }
 
 function onOpenPrivateChatWindow(id){
-    //renderPrivateChatWindow(id);
-    $.mobile.changePage( "index.html#chatPageTemplate", { transition: "slide"} );
     
-    //renderRecentConversations();
+    $.mobile.changePage( "index.html#chatPageTemplate", { transition: "slide"} );
     var friend = user.getFriendById(id);
+    
     $('#chatHistoryElementPlace').html(friend.historyElement);
     if(friend){
+        friend.recent = true;
         var history = friend.history;
         var historyL = history.length-1;
         var countMessage = friend.newMessages;
         if(countMessage>0){
             confirmPrivateMessage(history[historyL].senderId,history[historyL].receiverId,history[historyL].timeId,private_message_status.read);
             friend.updateMessageStatus(user.id,history[historyL].timeId,private_message_status.read);
-            friend.newMessages = 0;
             friend.setNewMessages(0);
             friend.recent = true;
         }

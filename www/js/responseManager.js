@@ -39,15 +39,16 @@ function responseGroupInfo(json) {
     }
     else {
         var group = new Group(json.data.groupId, json.data.groupLeader, json.data.groupName, json.data.groupStream,json.data.groupStreamStatus,json.data.history,json.data.limit,json.data.ongoingVideo,json.data.users);
-        user.groupList.push(group);
+        user.addGroup(group);
         if (group.isgroupLeader()) {
+            
             setActiveGroupChat(json.data.groupId);
             onAfterGroupCreate();
         }
         else{
             onAddToFriendGroup();
             renderContactList();
-            updateRecentConversations(group);
+            //updateRecentConversations(group);
         }
             
         
@@ -88,7 +89,6 @@ function responseGroupMessage(json) {
             if (json.data.senderId === user.id) {
                 $('#inputGroupMessage').val('');
             }
-                //addMessageToActiveGroupChat(group);
         }
         else {
             group.setNewMessages('+');
@@ -118,7 +118,6 @@ function responsePrivateMessageNew(json) {
     else {
         confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.delivered);
         friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.delivered);
-        friend.newMessages++;
         friend.setNewMessages('+');
     }
 

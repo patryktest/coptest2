@@ -68,14 +68,18 @@ function Friend(id, name, newMessages, status, history, recent) {
         }
     }
     function setNewMessagesF(num){
-        if(num==='+')
+        if(num==='+'){
             this.newMessages++;
+            addRecentNotification('friend',this);
+        }
         else if(num===0)
             clearRecentNotification('friend',this);
-        else
+        else{
             this.newMessages = num;
+            addRecentNotification('friend',this);
+        }
         
-        addRecentNotification('friend',this);
+        
         
     }
 

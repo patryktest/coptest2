@@ -503,6 +503,6 @@
     background-size: 160px auto;
 }
 
-#chatHistoryElementPlace, #groupHistoryElementPlace, #chatListElement {
+#chatHistoryElementPlace, #groupHistoryElementPlace {
     margin: -32px -13px -31px -53px;
 }
