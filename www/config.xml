@@ -37,9 +37,6 @@
   <license href="http://opensource.org/licenses/alphabetical">
   </license>
 
-  
-	<gap:platform name="android" />
-	<gap:platform name="blackberry" />
 
   <!-- Cordova API -->
   <feature id="blackberry.system" required="true" version="1.0.0.0" />
