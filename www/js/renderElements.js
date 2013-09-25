@@ -138,6 +138,7 @@ function renderPopupGroupMenu(content, left_btn, right_btn, add_function) {
 
 function itemTemplate(id_string, id, fun, name, countNewMessage, status, message,message_status) {
     var hidden = '';
+    var hidden_message_status= '';
     if (countNewMessage < 1)
         hidden = 'hidden';
     if (message_status==='')
