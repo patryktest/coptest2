@@ -31,8 +31,9 @@ function responseGroupInfo(json) {
     var nameChanged = false;
     if (group) {
         nameChanged = group.update(json.data.groupId, json.data.groupLeader, json.data.groupName, json.data.groupStream,json.data.groupStreamStatus,json.data.history,json.data.limit,json.data.ongoingVideo,json.data.users);
-        console.info(group);
+        console.info(group,mannage_group_name, nameChanged);
         if(mannage_group_name && nameChanged){
+            console.info('group name change');
             onOpenGroupChatWindow(getActiveGroupChat());
             mannage_group_name = false;
         }    

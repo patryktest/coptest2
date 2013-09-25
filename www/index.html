@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>WebSockets - Simple chat</title>
+        <title>Uniquedoc chat</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="css/UDTheme.css">
@@ -16,9 +16,9 @@
         <div data-role="page" id="loginPage" data-theme="d">
             <div data-role="content">
                 <p>
-                    <input type="text" id="loginI" value="patryktesting@gmail.com"/>
-                    <input type="password" id="passwordI" value="123456"/>
-                    <button onclick="login($('#loginI').val(), $('#passwordI').val());" id="loginButton" disabled="">Login</button>
+                    <input data-corners="false" type="text" id="loginI" value="patryktesting@gmail.com"/>
+                    <input data-corners="false" type="password" id="passwordI" value="123456"/>
+                    <button data-corners="false" onclick="login($('#loginI').val(), $('#passwordI').val());" id="loginButton" disabled="">Login</button>
                     <span id="connectionON">Status...</span>                    
                 </p>
 

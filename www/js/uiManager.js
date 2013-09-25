@@ -141,6 +141,7 @@ function onOpenPrivateGroupChat() {
     if (selectedFriend.length) {
         if (selectedFriend.length < 2){
             commandOpenPrivateChat(selectedFriend[0]);
+            clearSelectedFriend();
         }
         else
             commandOpenGroupChat(user.name);

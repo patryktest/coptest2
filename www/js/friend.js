@@ -10,8 +10,11 @@ function Friend(id, name, newMessages, status, history, recent) {
     for (var i = 0; i < history.length; i++)
         historyA.push(new Message(id, history[i].date, history[i].groupId, history[i].message, history[i].receiverId, history[i].senderId, history[i].status, history[i].time, history[i].timeId, history[i].timestamp));
     var message = '';
-    if (historyA.length)
+    var message_status = '';
+    if (historyA.length){
         message = historyA[historyA.length - 1].message;
+        message_status = historyA[historyA.length - 1].status;
+    }
     if (newMessages>0)
         message = 'new message';
 
@@ -33,7 +36,7 @@ function Friend(id, name, newMessages, status, history, recent) {
     this.startChat = 'commandOpenPrivateChat(' + this.id + ')';
     this.selectFriend = 'selectFriend(' + this.id + ')';
     this.updateMessageStatus = updateMessageStatusF;
-    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message);
+    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message,message_status);
     this.renderFriendStatus = renderFriendStatusF;
     this.setNewMessages = setNewMessagesF;
 
