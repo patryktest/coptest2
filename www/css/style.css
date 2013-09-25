@@ -528,3 +528,12 @@
 #loginPage .ui-input-text{
     border-radius: 0px;
 }
+
+.login_logo{
+    background: url("../img/logo_front.png") no-repeat scroll 0 0 transparent;
+    height: 225px;
+    left: 50%;
+    margin: 0 auto;
+    width: 250px;
+    background-size: 225px auto;
+}

@@ -38,6 +38,7 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
     this.addGroup = addGroupF;
     this.recentConversationElement = '';
     this.recentConversationElementInit= recentConversationElementInitF;
+    this.updateRecentConversationElement = updateRecentConversationElementF;
 
 
     function setUserStatusF(stat) {
@@ -98,8 +99,10 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
             element.push(this.groupList[i].itemElement);
         }
         return element;
-        
-
+    }
+    
+    function updateRecentConversationElementF(friend){
+        this.recentConversationElement.insertBefore(friend.itemElement,this.recentConversationElement.firstChild);
         
     }
 

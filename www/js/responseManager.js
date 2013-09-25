@@ -111,7 +111,9 @@ function responsePrivateHistory(json) {
 function responsePrivateMessageNew(json) {
     console.log('responsePrivateMessageNew: OK');    
     var friend = user.getFriendById(json.data.senderId);
-    friend.addToHistory(json.data);    
+    friend.addToHistory(json.data);  
+    friend.recent = true;
+    user.updateRecentConversationElement(friend);
     if (json.data.senderId === getActiveConverastion()) {
         confirmPrivateMessage(json.data.senderId,json.data.receiverId,json.data.timeId,private_message_status.read);
         friend.updateMessageStatus(user.id,json.data.timeId,private_message_status.read);
