@@ -21,8 +21,8 @@ function onConnectionError(){
  * After login response open main chat page with friend list and group list
  */
 function onUserLogin() {
-    //$.mobile.changePage( "index.html#mainPage", { transition: "slide"} );
-    window.location.replace('index.html#mainPage');
+    $.mobile.changePage( "index.html#mainPage" );
+    //window.location.replace('index.html#mainPage');
     renderRecentConversations();
 }
 
@@ -34,15 +34,15 @@ function onLogout(){
 function onGoToMainPage(){
     setActiveConverastion('');
     setActiveGroupChat('');
-    //$.mobile.changePage( "index.html#mainPage", { transition: "slide"} );
-    window.location.replace('index.html#mainPage');
+    $.mobile.changePage( "index.html#mainPage" );
+    //window.location.replace('index.html#mainPage');
     renderRecentConversations();
 }
 
 function onOpenPrivateChatWindow(id){
     
-    //$.mobile.changePage( "index.html#chatPageTemplate", { transition: "slide"} );
-    window.location.replace('index.html#chatPageTemplate');
+    $.mobile.changePage( "index.html#chatPageTemplate");
+    //window.location.replace('index.html#chatPageTemplate');
     var friend = user.getFriendById(id);
     
     $('#chatHistoryElementPlace').html(friend.historyElement);
@@ -74,8 +74,8 @@ function onOpenPageCreatingGroupChat(){
 }
 
 function onOpenGroupChatWindow(id){
-    //$.mobile.changePage( "index.html#groupChatPageTemplate", { transition: "slide"} );
-    window.location.replace('index.html#groupChatPageTemplate');
+    $.mobile.changePage( "index.html#groupChatPageTemplate" );
+    //window.location.replace('index.html#groupChatPageTemplate');
     setActiveGroupChat(id);
     //renderGroupChatWindow(id);
     
@@ -87,16 +87,16 @@ function onOpenGroupChatWindow(id){
     
 }
 function onCloseGroupChatWindow(){
-    //$.mobile.changePage( "index.html#mainPage", { transition: "slide"} );
-    window.location.replace('index.html#mainPage');
+    $.mobile.changePage( "index.html#mainPage" );
+    //window.location.replace('index.html#mainPage');
     setActiveGroupChat('');
     renderContactList(); 
 }
 
 function onOpenContactList(){
     
-    //$.mobile.changePage( "index.html#contactPage", { transition: "slide"} );
-    window.location.replace('index.html#contactPage');
+    $.mobile.changePage( "index.html#contactPage" );
+    //window.location.replace('index.html#contactPage');
     
     updateSelectedFriendView();
     if($('#contactListT').html()==="")
@@ -106,8 +106,8 @@ function onOpenContactList(){
 }
 function onManageGroupMembers(group){
     userlength = group.users.length;
-    //$.mobile.changePage( "index.html#contactPage", { transition: "slide"} );
-    window.location.replace('index.html#contactPage');
+    $.mobile.changePage( "index.html#contactPage" );
+    //window.location.replace('index.html#contactPage');
     if($('#contactListT').html()==="")
         renderContactList();
     for(var i=0;i<userlength;i++){
@@ -123,8 +123,8 @@ function onManageGroupMembers(group){
 
 function onOpenGroupMenu(groupId){
     var group = user.getGroupById(groupId);
-    //$.mobile.changePage( "index.html#groupMenuPageTemplate", { transition: "slide"} );
-    window.location.replace('index.html#groupMenuPageTemplate');
+    $.mobile.changePage( "index.html#groupMenuPageTemplate" );
+    //window.location.replace('index.html#groupMenuPageTemplate');
     renderGroupMenu(group);
     
 }
