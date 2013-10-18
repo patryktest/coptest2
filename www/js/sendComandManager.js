@@ -1,7 +1,11 @@
-function login(login, pass) {
-    //var params = ['conan@cd.ef', '123'];
+function commandLoginMainPage(login, pass) {
+    
     var status = user_status.online; 
     var device = user_device.blackberry;
+    if($('#saveLoginCheckBox input').prop('checked'))
+        ls.save(login,pass,true);
+    else
+        ls.save('','',false)
     try{
         if (login !== "" && pass !== "")
             sendCommand('user.loginWS', [login, pass, status, device]);
@@ -14,7 +18,7 @@ function login(login, pass) {
 }
 
 function commandLogin(){
-    sendCommand('user.login', [USER_ID, USER_SESSION, user_status.available, user_device.desktop]);
+    sendCommand('user.login', [USER_ID, USER_SESSION, user_status.online, user_device.desktop]);
 }
 function logout() {
     sendCommand('user.logout', [user.id]);

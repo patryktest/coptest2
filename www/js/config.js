@@ -15,7 +15,8 @@ var jsFiles = [
     "js/uiManager.js",
     "js/sendComandManager.js",
     "js/renderElements.js",
-    "js/updateElements.js"
+    "js/updateElements.js",
+    "js/localStorage.js",
 ];
 var scriptTags = new Array(jsFiles.length);
 for (var i = 0, len = jsFiles.length; i < len; i++) {
@@ -23,9 +24,10 @@ for (var i = 0, len = jsFiles.length; i < len; i++) {
 }
 document.write(scriptTags.join(""));
 
-var WEBSOCKETLINK =  /*'ws://192.168.2.40:8180/UniquedocChat'; //link for online chat */ 'ws://dev.uniquedoc.com:8180/UniqueDocChat';
-var USER_ID = 134;
-var USER_SESSION = '1';
+var WEBSOCKETLINK =  /*'ws://192.168.2.40:8180/UniquedocChat'; //link for online chat */ 'ws://dev.uniquedoc.com:8180/UniquedocChat';
+USER_ID = '';
+USER_SESSION = '';
+DEBUG_MODE = true;
 
 user_device = {
     blackberry: 'blackberry',
@@ -43,7 +45,6 @@ var private_message_status = {
 
 user_status = {
     online : 'CHAT_STATUS_ONLINE',
-    available : 'CHAT_STATUS_AVAILABLE',
     away : 'CHAT_STATUS_AWAY',
     emergency : 'CHAT_STATUS_EMERGENCY',
     invisible : 'CHAT_STATUS_INVISIBLE',

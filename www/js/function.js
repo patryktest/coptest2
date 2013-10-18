@@ -8,11 +8,14 @@
 
 $(function() {
     
-    connect();
     
-    if (user)
-        window.location = '#loginPage';
-
+    if (user){
+        window.location = '#loginPage';}
+    
+    connect();
+    init();
+    
+   
     $('#inputPrivateMessage').keydown(function(e) {
         if (e.keyCode === 13) {
             var msg = $(this).val();
@@ -41,6 +44,13 @@ $(function() {
     renderPopupMenu();
 });
 
+function init(){
+    ls = new LocalStorage();
+    $('#saveLoginCheckBox input').attr("checked",ls.checked);
+    $('#loginI').val(ls.name);
+    $('#passwordI').val(ls.pass);
+    
+}
 function monitor_events() {
     $("body").on("FilterInputCreated", function(event){
     
@@ -98,6 +108,14 @@ function isGroupUserInSelectFriend(user){
     return false;
 }
 
+function write(msg){
+    if(DEBUG_MODE)
+        console.log(msg);
+}
+function writeInfo(msg){
+    if(DEBUG_MODE)
+        console.info(msg);
+}
 
 
 

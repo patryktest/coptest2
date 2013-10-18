@@ -5,7 +5,7 @@ var selectedFriend = [];
  * return object friend
  */
 
-function Friend(id, name, newMessages, status, history, recent) {
+function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
     var historyA = new Array();
     for (var i = 0; i < history.length; i++)
         historyA.push(new Message(id, history[i].date, history[i].groupId, history[i].message, history[i].receiverId, history[i].senderId, history[i].status, history[i].time, history[i].timeId, history[i].timestamp));
@@ -17,10 +17,17 @@ function Friend(id, name, newMessages, status, history, recent) {
     }
     if (newMessages>0)
         message = 'new message';
-
-
+    
+    var avatar = null;
+    
+    if(typeof avatarBase64 !=='undefined' && avatarBase64!=='' ){
+        var avatar = avatarBase64;
+    };
+       
+       
     this.id = id;
     this.name = name;
+    this.avatar =avatar;
     this.newMessages = newMessages;
     this.status = status;
     this.history = historyA;
@@ -36,7 +43,7 @@ function Friend(id, name, newMessages, status, history, recent) {
     this.startChat = 'commandOpenPrivateChat(' + this.id + ')';
     this.selectFriend = 'selectFriend(' + this.id + ')';
     this.updateMessageStatus = updateMessageStatusF;
-    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message,message_status);
+    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message,message_status,this.avatar);
     this.renderFriendStatus = renderFriendStatusF;
     this.setNewMessages = setNewMessagesF;
 
@@ -51,6 +58,7 @@ function Friend(id, name, newMessages, status, history, recent) {
     function addToHistoryF(history) {
         this.history.push(new Message(user.id, history.date, history.groupId, history.message, history.receiverId, history.senderId, history.status, history.time, history.timeId, history.timestamp));
         this.updateHistoryElement();
+        updateRecentContactMessage(this.id,'friend',history.message,history.status);
     }
 
     function updateStatusF(status) {
@@ -75,8 +83,10 @@ function Friend(id, name, newMessages, status, history, recent) {
             this.newMessages++;
             addRecentNotification('friend',this);
         }
-        else if(num===0)
+        else if(num===0){
+            this.newMessages = 0;
             clearRecentNotification('friend',this);
+        }
         else{
             this.newMessages = num;
             addRecentNotification('friend',this);
@@ -119,6 +129,7 @@ function renderFriendStatusF(status){
         var historyLength = this.history.length;
         var i = 0;
         var userIsSender = false;
+        var avatar = null;
         numberMessageItemGroup = 0;
 
         if (historyLength > 4)
@@ -129,10 +140,12 @@ function renderFriendStatusF(status){
             if (this.history[i].senderId === user.id) {
                 name = user.name;
                 userIsSender = true;
+                avatar = null
             }
             else {
                 name = this.name;
                 userIsSender = false;
+                avatar = this.avatar
             }
 
             mess = this.history[i].message;
@@ -152,7 +165,7 @@ function renderFriendStatusF(status){
 
             if (lastSender !== name) {
                 numberMessageItemGroup++;
-                var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup);
+                var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
                 element_chatHistory.appendChild(element);
 
             }
@@ -199,6 +212,7 @@ function renderFriendStatusF(status){
     function updateHistoryElementF() {
         var time = '', mess = '', name = '', status = '';
         var userIsSender = false;
+        var avatar = null;
         var htmlString;
         var element_chatHistory = this.historyElement;
         
@@ -210,10 +224,12 @@ function renderFriendStatusF(status){
         if (lastMessage.senderId === user.id) {
             name = user.name;
             userIsSender = true;
+            avatar = null;
         }
         else {
             name = this.name;
             userIsSender = false;
+            avatar = this.avatar;
         }
         mess = lastMessage.message;
         var statusElement = lastMessage.statusElement;
@@ -229,7 +245,7 @@ function renderFriendStatusF(status){
 
         if (lastestMessage.senderId !== lastMessage.senderId) {
             numberMessageItemGroup++;
-            var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup);
+            var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
             element_chatHistory.appendChild(element);
         }
         else {
