@@ -44,7 +44,7 @@
 .ui-li-message-text {
     display: inline-block;
     font-size: 11pt;
-    line-height: 11pt;
+    line-height: 12pt;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 80%;
