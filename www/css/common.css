@@ -49,7 +49,7 @@
     text-overflow: ellipsis;
     width: 80%;
 }
-#chatListT li:hover {
+#chatListT li a:hover:hover {
     background: lightblue;
 }
 #statusLinkMainPage:focus, #statusLinkChat:focus, #statusLinkGroupChat:focus {
