@@ -37,7 +37,7 @@ function onLogout(){
 }
 function onRelogin(){
     user = {};
-    $.mobile.changePage( "index.html#loginPage" );
+    $.mobile.changePage( "index.html" );
 }
 
 function onGoToMainPage(){

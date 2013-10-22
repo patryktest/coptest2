@@ -3,7 +3,7 @@
  */
 function renderRecentConversations() {
     var element = $('#chatListElement');
-
+    element.empty();
     var elementUl = document.createElement('ul');
     elementUl.setAttribute('data-role', 'listview');
     elementUl.setAttribute('id', 'chatListT');

@@ -49,6 +49,6 @@
     text-overflow: ellipsis;
     width: 80%;
 }
-#chatListT li a:focus,#chatListT li a:hover {
-    box-shadow: 0 0 5px 2px lightblue inset;
+#chatListT li:hover {
+    background: lightblue;
 }
