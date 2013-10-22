@@ -42,8 +42,8 @@ $(document).bind("mobileinit", function(){
                 <h1 id="mainPageHeadT">Chat</h1> 
                 <!-- <button onclick="logout();">Logout</button> -->
                 <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">
-                    <a id="contactLink" onclick="onOpenContactList();"  href="" data-inline="true" data-transition="slide"></a>
-                    <a id="statusLinkMainPage"  href="#popupMenu" data-rel="popup" data-inline="true" data-transition="slidedown" data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
+                    <a x-blackberry-focusable="true" id="contactLink" onclick="onOpenContactList();"  href="" data-inline="true" data-transition="slide"></a>
+                    <a x-blackberry-focusable="true" id="statusLinkMainPage"  href="#popupMenu" data-rel="popup" data-inline="true" data-transition="slidedown" data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
                 </div>
             </div>
 
@@ -63,8 +63,8 @@ $(document).bind("mobileinit", function(){
             <div data-role="header" data-theme="d">
                 <h1 id="contactT">Connections</h1>  
                 <!-- <button onclick="logout();">Logout</button> -->
-                <a id="contactback" onclick="onGoToMainPage();"  href=""  data-inline="true" data-transition="slide" ></a>
-                <a id="statusLinkContatct"  href="#popupMenu2" data-rel="popup"  data-inline="true" data-transition="slidedown" class="ui-CHAT_STATUS_AVAILABLE"></a>
+                <a x-blackberry-focusable="true" id="contactback" onclick="onGoToMainPage();"  href=""  data-inline="true" data-transition="slide" ></a>
+                <a x-blackberry-focusable="true" id="statusLinkContatct"  href="#popupMenu2" data-rel="popup"  data-inline="true" data-transition="slidedown" class="ui-CHAT_STATUS_AVAILABLE"></a>
 
             </div>
 
@@ -92,10 +92,10 @@ $(document).bind("mobileinit", function(){
             <div data-role="header" data-position="fixed" data-theme="d">
                 <h1 id="chatPageTitle">Text chat</h1>  
                 
-                <a id="chatBack" onclick="onGoToMainPage();"  href=""  data-inline="true" data-transition="slide"></a>
+                <a x-blackberry-focusable="true" id="chatBack" onclick="onGoToMainPage();"  href=""  data-inline="true" data-transition="slide"></a>
                 <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">
-                    <a id="infoPrivateChat" onclick="onOpenContactList();"  href="" data-inline="true" data-transition="slide"></a>
-                    <a id="statusLinkChat"     href="#popupMenu3" data-rel="popup" data-inline="true" data-transition="slidedown" data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE"></a>
+                    <a x-blackberry-focusable="true" id="infoPrivateChat" onclick="onOpenContactList();"  href="" data-inline="true" data-transition="slide"></a>
+                    <a x-blackberry-focusable="true" id="statusLinkChat"     href="#popupMenu3" data-rel="popup" data-inline="true" data-transition="slidedown" data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE"></a>
                 </div>
             </div>
 
