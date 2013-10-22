@@ -76,6 +76,9 @@ function connect() {
             case 'SERVER_':
                 responseSetconversationMode(json);
                 break; 
+            case 'SERVER_RELOGIN':
+                responseRelogin(json);
+                break; 
         }
 
 

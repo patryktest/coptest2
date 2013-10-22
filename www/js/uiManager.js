@@ -33,7 +33,11 @@ function onUserLogin() {
 
 function onLogout(){
     user = {};
-    window.location.replace = '#loginPage';
+    $.mobile.changePage( "index.html#loginPage" );
+}
+function onRelogin(){
+    user = {};
+    $.mobile.changePage( "index.html#loginPage" );
 }
 
 function onGoToMainPage(){

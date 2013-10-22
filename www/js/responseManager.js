@@ -166,3 +166,7 @@ function responseStatusUpdate(json) {
 function responseSetconversationMode(json) {
 
 }
+
+function responseRelogin(){
+    onRelogin();
+}

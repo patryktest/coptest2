@@ -148,7 +148,8 @@
 }
 
 .chat-list-friend-item, .chat-list-group-item{
-    margin: -5px 0 0;
+    margin: -3px 0 0;
+    max-height: 18px;
 }
 
 .ui-selectedFriend img{
