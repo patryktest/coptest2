@@ -158,6 +158,7 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
     var div2 = document.createElement('div');
     div2.setAttribute('class','ui-btn-text');
     var a = document.createElement('a');
+    a.setAttribute('x-blackberry-focusable','true');
     a.setAttribute('onclick',fun);
     a.setAttribute('class','ui-link-inherit');
     
