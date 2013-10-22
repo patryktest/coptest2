@@ -153,12 +153,12 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
     element.setAttribute('data-icon', 'false');
     element.setAttribute('id', id_string + id);
     element.setAttribute('class','ui-btn ui-btn-icon-right ui-li ui-li-has-icon ui-first-child ui-last-child ui-btn-up-d');
+    element.setAttribute('x-blackberry-focusable','true');
     var div1 = document.createElement('div');
     div1.setAttribute('class','ui-btn-inner ui-li');
     var div2 = document.createElement('div');
     div2.setAttribute('class','ui-btn-text');
     var a = document.createElement('a');
-    a.setAttribute('x-blackberry-focusable','true');
     a.setAttribute('onclick',fun);
     a.setAttribute('class','ui-link-inherit');
     
