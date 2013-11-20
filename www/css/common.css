@@ -10,11 +10,11 @@
     z-index: 1;
 }
 #popupMenu li,#popupMenu2 li,#popupMenu3 li {
-    background: none repeat scroll 0 0 #EFF6FB;
+   /* background: none repeat scroll 0 0 #EFF6FB;*/
 }
 #popupMenu.ui-overlay-shadow,#popupMenu2.ui-overlay-shadow,#popupMenu3.ui-overlay-shadow {
     box-shadow: none;
-    border: 3px solid #CCC;
+    border: 1px solid #D7E9F1;
     border-radius: 0;
 }
 #popupMenu ul,#popupMenu2 ul,#popupMenu3 ul {
@@ -42,19 +42,51 @@
 }
 
 .ui-li-message-text {
-    display: inline-block;
-    font-size: 11pt;
-    line-height: 12pt;
+    /*display: inline-block;*/
+    font-size: 10pt;
+    /*line-height: 12pt;*/
     overflow: hidden;
     text-overflow: ellipsis;
     width: 80%;
 }
-#chatListT li a:hover:hover {
-    background: lightblue;
+#loginPage input {
+    border: none;
 }
-#statusLinkMainPage:focus, #statusLinkChat:focus, #statusLinkGroupChat:focus {
-    background: none repeat scroll 0 0 #ADD8E6;
+
+#chatPageTemplate .messageSendBox input,#groupChatPageTemplate .messageSendBox input {
+    border: medium none;
 }
-#contactLink:focus {
-    background: url("../img/icons_focus.svg") no-repeat scroll -94px -20px / 240px auto rgba(0, 0, 0, 0);
+.messageSendBox {
+    border: thin solid #D7E9F1;
+    margin: 5px 10px;
+}
+
+
+
+#contactListElement .ui-input-clear{
+    background: none;
+    border: none;
+}
+
+/*show button*/
+#showContactsBtn li{
+    background: none repeat scroll 0 0 #D7E9F1;   
+    max-height: 22px;
+}
+#showContactsBtn li:hover{
+    background: none repeat scroll 0 0 #03B7E4;
+}
+#showContactsBtn li:active{
+    background: none repeat scroll 0 0 #1B699B;
+}
+#showContactsBtn li .ui-btn-inner{
+    border: none;
+}
+#showContactsBtn li a{
+    color: #1A1C3B;
+    padding: 0;
+    text-align: center;
+}
+#showContactsBtn li:hover a{
+    color: #FFFFFF;
 }

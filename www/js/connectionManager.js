@@ -8,7 +8,7 @@ function connect() {
         connection = new WebSocket(WEBSOCKETLINK);
     }
     catch (e){
-        console.log(e);
+        console.log(e); return;
     }
     connection.onopen = function() {
         onConnectionOpen();   
@@ -75,9 +75,6 @@ function connect() {
                 break;
             case 'SERVER_':
                 responseSetconversationMode(json);
-                break; 
-            case 'SERVER_RELOGIN':
-                responseRelogin(json);
                 break; 
         }
 

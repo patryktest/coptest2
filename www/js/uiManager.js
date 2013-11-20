@@ -27,31 +27,26 @@ function onConnectionError(error){
  */
 function onUserLogin() {
     $.mobile.changePage( "index.html#mainPage" );
-    //window.location.replace('index.html#mainPage');
     renderRecentConversations();
+    renderContactList();
+    renderSelectFriendUl();
+    $("#contactListT").hide();    
 }
 
 function onLogout(){
     user = {};
-    $.mobile.changePage( "index.html#loginPage" );
-}
-function onRelogin(){
-    user = {};
-    $.mobile.changePage( "index.html" );
+    window.location.replace = '#loginPage';
 }
 
 function onGoToMainPage(){
     setActiveConverastion('');
     setActiveGroupChat('');
     $.mobile.changePage( "index.html#mainPage" );
-    //window.location.replace('index.html#mainPage');
-    renderRecentConversations();
 }
 
 function onOpenPrivateChatWindow(id){
     
-    $.mobile.changePage( "index.html#chatPageTemplate");
-    //window.location.replace('index.html#chatPageTemplate');
+    $.mobile.changePage( "index.html#chatPageTemplate");    
     var friend = user.getFriendById(id);
     
     $('#chatHistoryElementPlace').html(friend.historyElement);
@@ -68,6 +63,8 @@ function onOpenPrivateChatWindow(id){
         }
         
     }
+    
+    setDateBar();
     
 }
 
@@ -89,6 +86,7 @@ function onOpenGroupChatWindow(id){
     //renderGroupChatWindow(id);
     
     var group = user.getGroupById(id);
+    updateGroupChatWindowName(group);
     $('#groupHistoryElementPlace').html(group.historyElement);
     if(group){        
         group.setNewMessages(0);
@@ -97,43 +95,40 @@ function onOpenGroupChatWindow(id){
 }
 function onCloseGroupChatWindow(){
     $.mobile.changePage( "index.html#mainPage" );
-    //window.location.replace('index.html#mainPage');
     setActiveGroupChat('');
-    renderContactList(); 
 }
 
-function onOpenContactList(){
+/*function onOpenContactList(){
     
-    $.mobile.changePage( "index.html#contactPage" );
-    //window.location.replace('index.html#contactPage');
     
     updateSelectedFriendView();
     if($('#contactListT').html()==="")
         renderContactList();
     else
         updateContactListView();
-}
+}*/
+
 function onManageGroupMembers(group){
-    userlength = group.users.length;
-    $.mobile.changePage( "index.html#contactPage" );
-    //window.location.replace('index.html#contactPage');
-    if($('#contactListT').html()==="")
-        renderContactList();
+    var userlength = group.users.length;
+    $.mobile.changePage( "index.html#manageGroupContactPage" );
+    
+    $('#manageGroupContactPage #contactListT').html("")
+        renderGroupManageContactList();
+    
     for(var i=0;i<userlength;i++){
         addToSelectedFriend(group.users[i].id);
-        updateContactListSelectFriend(group.users[i].id, 'add');
+        updateGroupManageListSelectFriend(group.users[i].id, 'add');
     }
     
     
     
-    updateSelectedFriendView();
+    updateSelectedFriendInGroupView();
     
 }
 
 function onOpenGroupMenu(groupId){
     var group = user.getGroupById(groupId);
     $.mobile.changePage( "index.html#groupMenuPageTemplate" );
-    //window.location.replace('index.html#groupMenuPageTemplate');
     renderGroupMenu(group);
     
 }
@@ -147,7 +142,7 @@ function onGroupPopupMenu(command){
     
     switch(command){
         case 'manage': mannage_group_conntact = true; onManageGroupMembers(group); break;
-        case 'rename': mannage_group_name = true; renderPopupGroupMenu('<input type="text" id="inputGroupName" placeholder="'+group.groupName+'"/>','back','rename',setNamefunction);$('#popupGroupMenu').popup('open'); break;
+        case 'rename': mannage_group_name = true; renderPopupGroupMenu('<input type="text" id="inputGroupName" placeholder="'+group.name+'"/>','back','rename',setNamefunction);$('#popupGroupMenu').popup('open'); break;
         case 'leave':  renderPopupGroupMenu('Are you sure you want to leave group?','no','yes',leavefunction);$('#popupGroupMenu').popup('open');break;
         case 'close':  renderPopupGroupMenu('Are you sure you want to close group?','no','yes',closefunction);$('#popupGroupMenu').popup('open');break;
     }
@@ -162,6 +157,7 @@ function onOpenPrivateGroupChat() {
         }
         else
             commandOpenGroupChat(user.name);
+        onHideMoreContacts();
     }
 }
 
@@ -199,4 +195,22 @@ function onCancelManageGroupMembers(){
     mannage_group_conntact = false;
     clearSelectedFriend();
     onOpenGroupChatWindow(getActiveGroupChat());
+}
+
+function onShowMoreContacts(){
+    $("#contactListT").show(); 
+    $("#chatListT").hide();
+    $("div[data-role='footer']").hide();
+    $("#contactListElement form a").removeClass('ui-input-clear-hidden').addClass('ui-input-clear');
+    
+    
+}
+
+function onHideMoreContacts(){
+    $("#contactListT").hide(); 
+    $("#chatListT").show();
+    $('#contactPageSmallMenu').css({display: 'none'});
+    $("div[data-role='footer']").show();
+    clearSelectedFriendView();
+    
 }

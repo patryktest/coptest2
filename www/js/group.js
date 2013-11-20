@@ -3,12 +3,13 @@ var openGroupChat;
 
 function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, history, limit, ongoingVideo, users) {
     var message = '';
+    
     if (history.length)
         message = history[history.length - 1].message;
     
     this.displayGroupName = groupName;
     this.groupId = groupId;
-    this.groupName = groupName;
+    this.name = groupName;
     this.groupLeader = groupLeader;
     this.groupStream = groupStream;
     this.groupStreamStatus = groupStreamStatu;
@@ -23,7 +24,8 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
     this.users = users;
     this.newMessages = 0;
     this.startGroupChat = 'onOpenGroupChatWindow(' + this.groupId + ')';
-    this.itemElement = itemTemplate('group_list_',this.groupId,this.startGroupChat,this.displayGroupName,this.newMessages,null,message,'',null);
+    this.itemElement = itemTemplate('group_list_',this.groupId,this.startGroupChat,this.displayGroupName,this.newMessages,null,message,'',null,null);
+    this.contactListElement = itemTemplate('group_list_', this.groupId, this.startGroupChat, this.displayGroupName, null, null, null, null,null,null)
     this.updateItemElement = updateItemElementF;
     this.checkUpdateGroupName = checkUpdateGroupNameF;
     this.isgroupLeader = isgroupLeaderF;
@@ -47,12 +49,14 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
     }
 
     function checkUpdateGroupNameF() {
-        if (this.groupName === this.groupLeader.name)
+        if (this.name === this.groupLeader.name)
             this.displayGroupName = this.groupLeader.name + ' + ' + (this.users.length - 1);
+        else
+            this.displayGroupName = "Group <i>"+this.name+"</i>";
         updateRecentConversationGroupName(this);
         this.renderGroupName();
         if (this.groupId === getActiveGroupChat()) {
-            updtateGroupChatWindowName(this);
+            updateGroupChatWindowName(this);
         }
     }
 
@@ -79,11 +83,11 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
         return false;
     }
     function updateF(groupId, groupLeader, groupName, groupStream, groupStreamStatu, history, limit, ongoingVideo, users) {
-        var oldName = this.groupName;
+        var oldName = this.name;
             
         this.displayGroupName = groupName;
         this.groupId = groupId;
-        this.groupName = groupName;
+        this.name = groupName;
         this.groupLeader = groupLeader;
         this.groupStream = groupStream;
         this.groupStreamStatus = groupStreamStatu;
@@ -132,7 +136,18 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
     }
 
     function renderGroupNameF(){
+        // render name in item element
         var elements = this.itemElement.getElementsByTagName("span");
+        for(var i=0;i<elements.length;i++){
+            var classs = elements[i].className.split(' ');
+            for(var j=0;j<classs.length;j++){
+                if(classs[j]==='name')
+                    elements[i].innerHTML = '<strong>'+this.displayGroupName+'</strong>';
+            }
+
+        }
+        //render name in contactList element        
+        var elements = this.contactListElement.getElementsByTagName("span");
         for(var i=0;i<elements.length;i++){
             var classs = elements[i].className.split(' ');
             for(var j=0;j<classs.length;j++){
@@ -146,9 +161,6 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
 
         var time = '', mess = '', name = '', date = '';
 
-
-        $('#groupChatPageT').html(this.displayGroupName);
-
         var mainElement = document.createElement('ul');
         mainElement.setAttribute('data-role', 'listview');
         mainElement.setAttribute('id', 'groupChatHistory');
@@ -161,6 +173,7 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
         var lastSendTime = '';
         var lastDate = '';
         var status = '';
+        var avatar = null;
         var htmlString;
         var userIsSender = false;
         numberMessageItemGroup = 0;
@@ -171,6 +184,7 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
             }
             else {
                 //name = getFriendName(history[i].senderId);
+                //avatar = getFriendAvatarById(history[i].senderId);
                 name = '';
                 userIsSender = false;
             }
@@ -192,7 +206,7 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
 
             if (lastSender !== senderID) {
                 numberMessageItemGroup++;
-                var element = messageTemplate(userIsSender, mess, status, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup);
+                var element = messageTemplate(userIsSender, mess, status, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
                 element_groupChatHistory.appendChild(element);
             }
             else {
@@ -243,20 +257,19 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
     function updateItemElementF(){
         var elements = this.itemElement.getElementsByTagName("span");
     
-    for(var i=0;i<elements.length;i++){
-        var classs = elements[i].className.split(' ');
-        for(var j=0;j<classs.length;j++){
-            console.log(classs[j]);
-            if(classs[j]==='ui-li-message-text')
-                elements[i].innerHTML = this.lastMessage();
+        for(var i=0;i<elements.length;i++){
+            var classs = elements[i].className.split(' ');
+            for(var j=0;j<classs.length;j++){
+                if(classs[j]==='ui-li-message-text')
+                    elements[i].innerHTML = this.lastMessage();
+            }
+
         }
-        
-    }
     }
     function updateHistoryElementF() {
         var element_groupChatHistory = this.historyElement;
         var history = this.history;
-        var time = '', mess = '', name = '', date = '';
+        var time = '', mess = '', name = '', date = '', avatar = null;
         var userIsSender = false;
         var htmlString;
 
@@ -271,6 +284,7 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
         }
         else {
             //name = getFriendName(lastMessage.senderId);
+            //avatar = getFriendAvatarById(lastMessage.senderId);
             userIsSender = false;
             name = '';
         }
@@ -288,7 +302,7 @@ function Group(groupId, groupLeader, groupName, groupStream, groupStreamStatu, h
 
         if (lastestMessage.senderId !== lastMessage.senderId) {
             numberMessageItemGroup++;
-            var element = messageTemplate(userIsSender, lastMessage.message, '', (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup);
+            var element = messageTemplate(userIsSender, lastMessage.message, '', (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
             element_groupChatHistory.appendChild(element);
         }
         else {

@@ -17,6 +17,9 @@ var jsFiles = [
     "js/renderElements.js",
     "js/updateElements.js",
     "js/localStorage.js",
+    "js/date.js",
+    "js/config_menu.js",
+    "js/menu.js"
 ];
 var scriptTags = new Array(jsFiles.length);
 for (var i = 0, len = jsFiles.length; i < len; i++) {
@@ -24,11 +27,14 @@ for (var i = 0, len = jsFiles.length; i < len; i++) {
 }
 document.write(scriptTags.join(""));
 
-var WEBSOCKETLINK =  /*'ws://192.168.2.40:8180/UniquedocChat'; //link for online chat */ 'ws://dev.uniquedoc.com:8180/UniquedocChat';
+
 USER_ID = '';
 USER_SESSION = '';
 DEBUG_MODE = true;
-
+if(DEBUG_MODE)
+    WEBSOCKETLINK =  'ws://dev.uniquedoc.com:8180/UniquedocChat';//'ws://192.168.2.40:8180/UniquedocChat';
+else
+    WEBSOCKETLINK =  'ws://dev.uniquedoc.com:8180/UniquedocChat';
 user_device = {
     blackberry: 'blackberry',
     mobile: 'mobile',

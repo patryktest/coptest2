@@ -5,7 +5,7 @@ var selectedFriend = [];
  * return object friend
  */
 
-function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
+function Friend(id, name, newMessages, status, history, recent,avatarBase64,device) {
     var historyA = new Array();
     for (var i = 0; i < history.length; i++)
         historyA.push(new Message(id, history[i].date, history[i].groupId, history[i].message, history[i].receiverId, history[i].senderId, history[i].status, history[i].time, history[i].timeId, history[i].timestamp));
@@ -28,6 +28,7 @@ function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
     this.id = id;
     this.name = name;
     this.avatar =avatar;
+    this.device = device;
     this.newMessages = newMessages;
     this.status = status;
     this.history = historyA;
@@ -42,9 +43,12 @@ function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
     this.updateStatus = updateStatusF;
     this.startChat = 'commandOpenPrivateChat(' + this.id + ')';
     this.selectFriend = 'selectFriend(' + this.id + ')';
+    this.selectFriendGroup = 'selectFriendGroup(' + this.id + ')';
     this.updateMessageStatus = updateMessageStatusF;
-    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message,message_status,this.avatar);
-    this.renderFriendStatus = renderFriendStatusF;
+    this.itemElement = itemTemplate('friend_list_',this.id,this.startChat,this.name,this.newMessages,this.status,message,message_status,this.avatar,this.device);
+    this.contactListElement = itemTemplate('friend_list_', this.id, this.selectFriend, this.name, null, this.status, null, null, this.avatar,this.device);
+    this.manageGroupListElement = itemTemplate('friend_list_', this.id, this.selectFriendGroup, this.name, null, this.status, null, null, this.avatar,this.device);
+    this.updateFriendElement = updateFriendElementF;
     this.setNewMessages = setNewMessagesF;
 
     function updateHistoryF(history) {
@@ -61,9 +65,10 @@ function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
         updateRecentContactMessage(this.id,'friend',history.message,history.status);
     }
 
-    function updateStatusF(status) {
+    function updateStatusF(status,device) {
         this.status = status;
-        this.renderFriendStatus(status);
+        this.device = device;
+        this.updateFriendElement(status,device);
     }
 
     function openPrivateChatF() {
@@ -97,14 +102,25 @@ function Friend(id, name, newMessages, status, history, recent,avatarBase64) {
     }
 
 
-function renderFriendStatusF(status){
+function updateFriendElementF(status,device){
     var elements = this.itemElement.getElementsByTagName("span");
     
     for(var i=0;i<elements.length;i++){
         var classs = elements[i].className.split(' ');
         for(var j=0;j<classs.length;j++){
             if(classs[j]==='user-status-icon')
-                elements[i].setAttribute('class','user-status-icon ui-icon-' + status + ' device-mobile');
+                elements[i].setAttribute('class','user-status-icon ui-icon-' + status + ' device-'+device);
+        }
+        
+    }
+    
+    var elements = this.contactListElement.getElementsByTagName("span");
+    
+    for(var i=0;i<elements.length;i++){
+        var classs = elements[i].className.split(' ');
+        for(var j=0;j<classs.length;j++){
+            if(classs[j]==='user-status-icon')
+                elements[i].setAttribute('class','user-status-icon ui-icon-' + status + ' device-'+device);
         }
         
     }
@@ -154,7 +170,9 @@ function renderFriendStatusF(status){
 
             var newDate = new Date(this.history[i].timeId);
             time = newDate.getUTCFullYear() + ':' + newDate.getUTCDate() + ':' + newDate.getUTCMonth() + ':' + newDate.getUTCHours() + ':' + newDate.getUTCMinutes();
-            date = newDate.getUTCDate() + '.' + newDate.getUTCMonth() + '.' + newDate.getUTCFullYear();
+            date = newDate.toString('dddd,d');//getUTCDate() + '.' + newDate.getUTCMonth() + '.' + newDate.getUTCFullYear();
+            date+=newDate.getOrdinal();
+            date+=newDate.toString(' MMMM yyyy');
             if (lastDate === date) {
                 date = "";
             }
@@ -162,10 +180,20 @@ function renderFriendStatusF(status){
                 lastDate = date;
             }
 
-
-            if (lastSender !== name) {
-                numberMessageItemGroup++;
-                var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
+            if(date!==""){
+                var element = document.createElement('li');
+                element.setAttribute('class', 'ui-li ui-li-static ui-btn-up-d ui-li-chat-date');
+                element.innerHTML = date;
+                element_chatHistory.appendChild(element);
+                //dateTagList.push(element);
+                //console.log("add to dataTagList");
+                
+                //console.log('elements',dateTagList);
+                
+            }
+            if (lastSender !== name || date!=="") {
+                if(date=="")numberMessageItemGroup++;
+                var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes(), numberMessageItemGroup,avatar);
                 element_chatHistory.appendChild(element);
 
             }
@@ -189,7 +217,7 @@ function renderFriendStatusF(status){
                 //htmlString += '<p class="ui-li-message-time ui-li-desc">' + (newDate.getHours()<10?'0':'')+newDate.getHours()+':'+(newDate.getMinutes()<10?'0':'')+newDate.getMinutes() + ' '+date +' '+status+'</p>';
                 var elementTime = document.createElement('p');
                 elementTime.setAttribute('class', 'ui-li-message-time ui-li-desc');
-                elementTime.innerHTML = (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date;
+                elementTime.innerHTML = (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes();
                 elementTime.appendChild(statusElement);
                 element.appendChild(elementTime);
             }
@@ -237,15 +265,27 @@ function renderFriendStatusF(status){
         var newDate = new Date(lastMessage.timeId);
         var lastDate = new Date(lastestMessage.timeId);
         time = newDate.getUTCFullYear() + ':' + newDate.getUTCDate() + ':' + newDate.getUTCMonth() + ':' + newDate.getUTCHours() + ':' + newDate.getUTCMinutes();
-        var date = newDate.getUTCDate() + '.' + newDate.getUTCMonth() + '.' + newDate.getUTCFullYear();
+        var date = newDate.toString('dddd,d');//getUTCDate() + '.' + newDate.getUTCMonth() + '.' + newDate.getUTCFullYear();
+        date+=newDate.getOrdinal();
+        date+=newDate.toString(' MMMM yyyy');
         var oldTime = lastDate.getUTCFullYear() + ':' + lastDate.getUTCDate() + ':' + lastDate.getUTCMonth() + ':' + lastDate.getUTCHours() + ':' + lastDate.getUTCMinutes();
-        var oldDate = lastDate.getUTCDate() + '.' + lastDate.getUTCMonth() + '.' + lastDate.getUTCFullYear();
+        var oldDate = lastDate.toString('dddd,d');//getUTCDate() + '.' + lastDate.getUTCMonth() + '.' + lastDate.getUTCFullYear();
+        oldDate+=lastDate.getOrdinal();
+        oldDate+=lastDate.toString(' MMMM yyyy');
+        
         if (oldDate === date)
             date = "";
 
-        if (lastestMessage.senderId !== lastMessage.senderId) {
-            numberMessageItemGroup++;
-            var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date, numberMessageItemGroup,avatar);
+        if(date!==""){
+                        var element = document.createElement('li');
+                        element.setAttribute('class', 'ui-li ui-li-static ui-btn-up-d ui-li-chat-date');
+                        element.innerHTML = date;
+                        element_chatHistory.appendChild(element);
+        }
+        if (lastestMessage.senderId !== lastMessage.senderId || date!=="") {
+            if(date=="")numberMessageItemGroup++;
+            
+            var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes(), numberMessageItemGroup,avatar);
             element_chatHistory.appendChild(element);
         }
         else {
@@ -267,7 +307,7 @@ function renderFriendStatusF(status){
             }
             var elementTime = document.createElement('p');
             elementTime.setAttribute('class', 'ui-li-message-time ui-li-desc');
-            elementTime.innerHTML = (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes() + ' ' + date;
+            elementTime.innerHTML = (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes();
             elementTime.appendChild(statusElement);
             element.appendChild(elementTime);
         }
@@ -292,6 +332,13 @@ function getFriendName(id) {
     }
     return null;
 }
+/*function getFriendAvatarById(id){
+    for (var i = 0; i < user.friendList.length; i++) {
+        if (user.friendList[i].id === id)
+            return user.friendList[i].avatar;
+    }
+    return null;
+}*/
 
 function addToSelectedFriend(id) {
     selectedFriend.push(id);
@@ -327,6 +374,18 @@ function selectFriend(id) {
     }
     updateSelectedFriendView();
 
+}
+
+function selectFriendGroup(id){
+    if (isSelectedFriend(id)) {
+        removeFromSelectedFriend(id);
+        updateGroupManageListSelectFriend(id, 'remove');
+    }
+    else {
+        addToSelectedFriend(id);
+        updateGroupManageListSelectFriend(id, 'add');
+    }
+    updateSelectedFriendInGroupView();
 }
 
 

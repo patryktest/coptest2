@@ -3,7 +3,7 @@
  */
 function renderRecentConversations() {
     var element = $('#chatListElement');
-    element.empty();
+
     var elementUl = document.createElement('ul');
     elementUl.setAttribute('data-role', 'listview');
     elementUl.setAttribute('id', 'chatListT');
@@ -13,21 +13,33 @@ function renderRecentConversations() {
         elementUl.appendChild(array[i]);
     element.append(elementUl);
     user.recentConversationElement = elementUl;
-    /*var element = $('#chatListT');
-    if ((element).hasClass('ui-listview')) {
-        element.listview();
-        element.listview('refresh');
-    }*/
-
 }
 
 /*
  *  render contact list friends + group
  */
 function renderContactList() {
-    element = $('#contactListT');
-    element.text('');
+    var element = $('#contactListElement');
+    
+    var elementUl = document.createElement('ul');
+    elementUl.setAttribute('data-role', 'listview');
+    elementUl.setAttribute('id', 'contactListT');
+    //elementUl.setAttribute('class', 'ui-listview');
+    elementUl.setAttribute('data-filter-placeholder', 'search for connections');
+    elementUl.setAttribute('data-filter', 'true');
+    
+    var array = user.allContactElementInit(true);
+    for (var i = 0; i < array.length; i++)
+        elementUl.appendChild(array[i].contactListElement);
+    
+    
+    element.append(elementUl);
 
+    var myUL = $('#contactListT')
+    myUL.listview();
+    user.allContactElement = elementUl;
+
+/*
     var contactList = [];
     for (var i = 0; i < user.friendList.length; i++) {
         contactList.push({id: user.friendList[i].id, name: user.friendList[i].name, group: 0, status: user.friendList[i].status, fun: user.friendList[i].selectFriend, avatar:user.friendList[i].avatar});
@@ -46,8 +58,13 @@ function renderContactList() {
     });
     var letterDivider = "";
     for (var i = 0; i < contactList.length; i++) {
-        if (contactList[i].name[0].toUpperCase() !== letterDivider)
+        /*
+         * add letter devider to contact list
+         */
+        /*if (contactList[i].name[0].toUpperCase() !== letterDivider)
             element.append('<li data-icon="false" id="letterDivider">' + contactList[i].name[0].toUpperCase() + '</li>');
+        */
+       /*
         if (!contactList[i].group)
             element.append(itemTemplate('friend_list_', contactList[i].id, contactList[i].fun, contactList[i].name, null, contactList[i].status, null, null, contactList[i].avatar));
         else             
@@ -62,7 +79,29 @@ function renderContactList() {
     
     $('body').trigger('FilterInputCreated');
 }
+function renderGroupManageContactList(){
+    var element = $('#manageGroupContactPage #contactListT');
+    
+    
+    
+    var array = user.allContactElementInit(false);
+    for (var i = 0; i < array.length; i++)
+        element.append(array[i].manageGroupListElement);
 
+    var myUL = $('#manageGroupContactPage #contactListT')
+    myUL.listview();
+    
+}
+
+function renderSelectFriendUl(){
+    var html = '<ul id="contactList-selectedFriendT" data-role="listview" class="ui-listview">\n\
+                </ul>\n\
+                <ul data-role="listview" id="contactPageSmallMenu">\n\
+                    <li data-icon="false" class="btn_openPrivateGroupChat"><a onclick="onOpenPrivateGroupChat();" href=""><span class="smallMenuBtn"></span></a></li>\n\
+                </ul>\n\ ';
+    html
+    $("#contactListElement form").after(html);
+}
 /*
  * render popups menu for main, contact and chat page
  */
@@ -87,7 +126,7 @@ function renderGroupMenu(group) {
     for (var i = 0; i < group.users.length; i++) {
         html += '\
                 <li data-icon="false" id="friend_list_' + group.users[i].id + '">\n\
-                    <a onclick="selectFriend(' + group.users[i].id + ');" href="">\n\
+                    <a href="">\n\
                         <img  src="./img/profil_img.png" alt="status" class="ui-li-icon">' + group.users[i].name + '\
                     </a>\n\
                 </li>\n\
@@ -124,16 +163,18 @@ function renderPopupGroupMenu(content, left_btn, right_btn, add_function) {
     var button_left = $('a.left_btn');
     var button_right = $('a.right_btn');
     button_left.css('marginLeft',-button_left.width()-15+'px');
-    console.info($('a.left_btn').width());
-
-
-
 }
 
 
 
 
-function itemTemplate(id_string, id, fun, name, countNewMessage, status, message,message_status,avatarBase64) {
+function itemTemplate(id_string, id, fun, name, countNewMessage, status, message,message_status,avatarBase64,_device) {
+    var device = "";
+    if(_device == null)
+        device = user_device.desktop;
+    else 
+        device = _device;
+    
     var hidden = '';
     var hidden_message_status= '';
     if (countNewMessage < 1)
@@ -153,7 +194,6 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
     element.setAttribute('data-icon', 'false');
     element.setAttribute('id', id_string + id);
     element.setAttribute('class','ui-btn ui-btn-icon-right ui-li ui-li-has-icon ui-first-child ui-last-child ui-btn-up-d');
-    
     var div1 = document.createElement('div');
     div1.setAttribute('class','ui-btn-inner ui-li');
     var div2 = document.createElement('div');
@@ -161,7 +201,7 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
     var a = document.createElement('a');
     a.setAttribute('onclick',fun);
     a.setAttribute('class','ui-link-inherit');
-    a.setAttribute('x-blackberry-focusable','true');
+    
     a.innerHTML =  '<img  src="'+image+'" alt="status" class="ui-li-icon"><span class="name">' + namePart + '</span>';
     
     var pfrienditemelement = document.createElement('p');
@@ -175,7 +215,7 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
         a.appendChild(pfrienditemelement);
     
     if (status !== null)
-        a.innerHTML = a.innerHTML+'<span class="user-status-icon ui-icon-' + status + ' device-mobile"></span></div></div>\n';
+        a.innerHTML = a.innerHTML+'<span class="user-status-icon ui-icon-' + status + ' device-'+device+'"></span></div></div>\n';
     div1.appendChild(div2);
     div2.appendChild(a);
     element.appendChild(div1);

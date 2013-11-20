@@ -18,7 +18,7 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
             }
         }
         
-        friendListArray.push(new Friend(friendListA[i].id, friendListA[i].name, friendListA[i].newMessages, friendListA[i].status, history, recent,friendListA[i].avatarBase64));
+        friendListArray.push(new Friend(friendListA[i].id, friendListA[i].name, friendListA[i].newMessages, friendListA[i].status, history, recent,friendListA[i].avatarBase64,friendListA[i].device));
     }
     var groupListArray = new Array();
     for (var i = 0; i < groupListA.length; i++) {
@@ -40,6 +40,10 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
     this.recentConversationElement = '';
     this.recentConversationElementInit= recentConversationElementInitF;
     this.updateRecentConversationElement = updateRecentConversationElementF;
+    
+    this.allContactElement = '';
+    this.allContactElementInit = allContactElementInitF;
+    this.allContactWOGroupElementInit = allContactElementInitF;
 
 
     function setUserStatusF(stat) {
@@ -76,27 +80,17 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
     function addGroupF(group){
         user.groupList.push(group);
         this.recentConversationElement.appendChild(group.itemElement);
-        /*var element = $('#chatListT');
-        if ((element).hasClass('ui-listview')) {
-            //element.listview();
-            element.listview('refresh');
-        }*/
+        this.allContactElement.appendChild(group.contactListElement);
     }
 
     function recentConversationElementInitF() {
-       /* var element = document.createElement('ul');
-        element.setAttribute('data-role','listview');
-        element.setAttribute('id','chatListT');
-        */
        var element = new Array();
         for (var i = 0; i < this.friendList.length; i++) {
             if (this.friendList[i].recent) {
-                //element.appendChild(this.friendList[i].itemElement);
                 element.push(this.friendList[i].itemElement);
             }
         }
         for (var i = 0; i < this.groupList.length; i++) {
-            //element.appendChild(this.groupList[i].itemElement);
             element.push(this.groupList[i].itemElement);
         }
         return element;
@@ -105,6 +99,30 @@ function User(id, name, status, friendListA, groupListA, lastConversationA) {
     function updateRecentConversationElementF(friend){
         this.recentConversationElement.insertBefore(friend.itemElement,this.recentConversationElement.firstChild);
         
+    }
+    
+    function allContactElementInitF(withGroup){
+        var contactList = [];
+        
+        for(var i=0;i<this.friendList.length;i++){
+            contactList.push(this.friendList[i]);
+        }
+        if(withGroup === true){
+            for(var i=0;i<this.groupList.length;i++){
+                contactList.push(this.groupList[i]);
+            }
+        }
+        
+        contactList.sort(function(a, b) {
+            var nameA = a.name.toLowerCase();
+            var nameB = b.name.toLowerCase();
+            if (nameA < nameB)
+                return -1;
+            if (nameA > nameB)
+                return 1;
+            return 0;
+        });
+        return contactList;
     }
 
 

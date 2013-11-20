@@ -63,7 +63,7 @@ function clearRecentNotification(command, item) {
 
 
 function updateRecentConversations(group) {
-    message = '';
+    var message = '';
     $('#chatListT').listview();
     $('#chatListT').append('\n\
         <li id="group_list_' + group.groupId + '" data-icon="false">\n\
@@ -86,7 +86,7 @@ function updateContactListGroupName(group) {
     $('#group_list_' + group.groupId + ' .name').html(group.displayGroupName);
 }
 
-function updtateGroupChatWindowName(group) {
+function updateGroupChatWindowName(group) {
     $('#groupChatPageTemplate #groupChatPageT').html(group.displayGroupName);
 }
 
@@ -105,15 +105,8 @@ function updateContactListSelectFriend(id, command) {
 
 function updateSelectedFriendView() {
     
-    if (mannage_group_conntact) {
-        $('#contactT').html('Manage Group');
-        $('.manageGroupMembers').removeClass('hidden');
-        $('.btn_openPrivateGroupChat').addClass('hidden');
-    } else {
         $('#contactT').html('Connections');
-        $('.manageGroupMembers').addClass('hidden');
-        $('.btn_openPrivateGroupChat').removeClass('hidden');
-    }
+
     if (selectedFriend.length)
         $('#contactPageSmallMenu').css({display: 'block'});
     else
@@ -144,6 +137,51 @@ function updateSelectedFriendView() {
 
 }
 
+function updateGroupManageListSelectFriend(id, command) {
+    switch (command) {
+        case 'add':
+            $('#manageGroupContactPage #contactListT #friend_list_' + id).addClass('ui-selectedFriend');
+            break;
+        case 'remove':
+            $('#manageGroupContactPage #contactListT #friend_list_' + id).removeClass('ui-selectedFriend');
+            break;
+    }
+
+
+}
+function updateSelectedFriendInGroupView(){
+    $('#manageGroupContactT').html('Manage Group');
+    
+    if (selectedFriend.length)
+        $('#manageGroupContactPage #contactPageSmallMenu').css({display: 'block'});
+    else
+        $('#manageGroupContactPage #contactPageSmallMenu').css({display: 'none'});
+    
+    $('#manageGroupContactPage #contactList-selectedFriendT').text('');
+    for (var i = 0; i < user.friendList.length; i++) {
+        for (var j = 0; j < selectedFriend.length; j++) {
+            if (user.friendList[i].id === selectedFriend[j]) {
+                var image = './img/profil_img.png';  
+                if(user.friendList[i].avatar!==null)
+                    image = 'data:image/png;base64,'+user.friendList[i].avatar;
+                $('#manageGroupContactPage #contactList-selectedFriendT').append('<li id="friend_list_' + user.friendList[i].id + '" class="ui-btn ui-btn-icon-right ui-li ui-li-has-icon ui-btn-up-d" data-icon="false" data-corners="false" data-shadow="false" data-iconshadow="true" data-wrapperels="div" data-iconpos="right" data-theme="d">\n\
+                 <div class="ui-btn-inner ui-li">\n\
+                    <div class="ui-btn-text">\n\
+                        <a class="ui-link-inherit" href="" onclick="selectFriendGroup(' + user.friendList[i].id + ');">\n\
+                            <img class="ui-li-icon ui-li-thumb" alt="status" src="' + image + '">\n\
+                                ' + user.friendList[i].name + '\n\
+                            </a>\n\
+                            <span class="user-delet-icon"></span>\n\
+                            <span class="user-status-icon ui-icon-' + user.friendList[i].status + ' device-mobile"></span>\n\
+                    </div>\n\
+                </div>\n\
+                </li>');
+            }
+        }
+    }
+
+    
+}
 function removeGroupFromContactList(id) {
     $('#contactListT #group_list_' + id).remove();
 }
@@ -155,4 +193,39 @@ function removeGroupFromMainList(id) {
 function updateContactListView() {
     for (var i = 0; i < user.friendList.length; i++)
         $('#contactListT #friend_list_' + user.friendList[i].id).removeClass('ui-selectedFriend');
+}
+
+function updateStatusIcon(statusNew, statusOld) {
+    //console.log('change status icon');
+    $('#mainPage .ui-header #statusLinkMainPage').removeClass('ui-' + statusOld);
+    $('#mainPage .ui-header #statusLinkMainPage').addClass('ui-' + statusNew);
+
+    $('#mainPage .ui-header #statusLinkContatct').removeClass('ui-' + statusOld);
+    $('#mainPage .ui-header #statusLinkContatct').addClass('ui-' + statusNew);
+
+    $('#mainPage .ui-header #statusLinkChat').removeClass('ui-' + statusOld);
+    $('#mainPage .ui-header #statusLinkChat').addClass('ui-' + statusNew);
+
+
+
+}
+
+function updateDateBar(){
+    var dateTag = $(".ui-li-chat-date");
+    //$(".ui-li-chat-date").first().hide();   
+    
+    for(var i=0;i<dateTag.length;i++){
+        if(dateTag[i].offsetTop-window.scrollY<20)
+            $(".ui-li-dateinfo").text(dateTag[i].textContent);   
+    }    
+}
+function setDateBar(){
+    var dateTag = $(".ui-li-chat-date");
+    $(".ui-li-chat-date").first().hide();
+    $(".ui-li-dateinfo").text($(".ui-li-chat-date").first().text())
+}
+
+function clearSelectedFriendView(){
+    $('#contactList-selectedFriendT').text('');
+    $('#contactListT li').removeClass('ui-selectedFriend');
 }

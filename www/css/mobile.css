@@ -1,0 +1,184 @@
+
+.header-menu ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.icon-img {
+    background: url("../img/mobile_icons.svg") no-repeat scroll 0 0 / 220px auto rgba(0, 0, 0, 0);
+}
+.icon-logo {
+    background-position: -189px 0;
+    height: 20px;
+    width: 20px;
+}
+.icon-box {
+    background-position: -69px 0;
+    height: 20px;
+    width: 18px;
+}
+.icon-chat {
+    background-position: -173px -19px;
+    height: 20px;
+    width: 17px;
+}
+.icon-menu {
+    background-position: -91px -56px;
+    height: 20px;
+    width: 18px;
+}
+.icon-back {
+    background-position: 12px 0;
+    display: block;
+    height: 20px;
+    width: 32px;
+}
+.header-menu li span {
+    display: block;
+    margin: 14px auto 0;
+}
+.header-menu li {
+    border-color: -moz-use-text-color #D7E9F1 #D7E9F1 -moz-use-text-color;
+    border-image: none;
+    border-right: thin solid #D7E9F1;
+    border-style: none solid solid none;
+    border-width: medium thin thin medium;
+    float: left;
+    height: 50px;
+    list-style: none outside none;
+    margin-bottom: 10px;
+    width: 24.5%;
+}
+.header-menu li.menu-d {
+    border-right: medium none;
+}
+.header-menu li.menu-enable.menu-a:hover > span {
+    background-position: 0 0;
+}
+.header-menu li.menu-enable.menu-b:hover > span {
+    background-position: 0 0;
+}
+.header-menu li.menu-enable.menu-c:hover > span {
+    background-position: 0 0;
+}
+.header-menu li.menu-enable.menu-d:hover > span {
+    background-position: 0 0;
+}
+.popup-screen-bg {
+    background: none repeat scroll 0 0 #000000;
+    height: 100%;
+    opacity: 0.5;
+    position: absolute;
+    width: 100%;
+}
+.icon-logout {
+    background-position: -110px -54px;
+    height: 20px;
+    width: 18px;
+}
+.popup-screen {
+    left: 0;
+    position: absolute;
+    top: 86px;
+    width: 100%;
+}
+#UDPopup {
+    display: none;
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9998;
+}
+.ui-mobile .ui-header {
+    z-index: 9999;
+}
+.popup-screen ul {
+    background: none repeat scroll 0 0 #FFFFFF;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.popup-icon-left, .popup-icon-right {
+    float: left;
+    margin: 12px 15px 0;
+}
+.popup-screen ul li {
+    border-color: -moz-use-text-color #D7E9F1 #D7E9F1;
+    border-image: none;
+    border-right: thin solid #D7E9F1;
+    border-style: none solid solid;
+    border-width: medium thin thin;
+    min-height: 50px;
+}
+.menu-text-left, .menu-text-right {
+    margin-top: 12px;
+    overflow: hidden;
+    position: absolute;
+}
+.popup-icon-right {
+    float: right;
+}
+.menu-text-right {
+    right: 50px;
+    text-align: right;
+}
+.menu-text-left {
+    left: 50px;
+}
+.icon-groupMembers {
+    background-position: -147px -55px;
+    height: 20px;
+    width: 18px;
+}
+.icon-delete {
+    background-position: -128px -55px;
+    height: 20px;
+    width: 18px;
+}
+
+
+.menu-text-color-CHAT_STATUS_ONLINE{
+    color: #00CC99;
+}
+.menu-text-color-CHAT_STATUS_AWAY{
+    color: #00CCCC;
+}
+.menu-text-color-CHAT_STATUS_EMERGENCY{
+    color: #FF6600;
+}
+.menu-text-color-CHAT_STATUS_OFFLINE{
+    color: #CCCCCC;
+}
+.menu-text-color-CHAT_STATUS_INVISIBLE {
+    color: #FFFF99;
+}
+
+.menu-enable{
+    cursor: pointer;
+}
+.menu-disable{
+    cursor: default;
+}
+
+#statusLinkMainPage, #statusLinkChat, #statusLinkGroupChat{
+    border-radius: 16px 16px 16px 16px;
+    display: block;
+    height: 15px;
+    width: 15px;       
+}
+
+.header-status {
+    position: absolute;
+    right: 20px;
+    top: 60px;
+}
+.header-backBtn {
+    position: absolute;
+    left: 20px;
+    top: 60px;
+}
+

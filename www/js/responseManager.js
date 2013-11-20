@@ -47,8 +47,6 @@ function responseGroupInfo(json) {
         }
         else{
             onAddToFriendGroup();
-            renderContactList();
-            //updateRecentConversations(group);
         }
             
         
@@ -154,7 +152,7 @@ function responseStatusUpdate(json) {
         }
         if(change_status){ 
             var friend = user.getFriendById(json.userId);
-            friend.updateStatus(json.chatStatus);
+            friend.updateStatus(json.chatStatus,json.device);
         }
     }
     else
@@ -165,8 +163,4 @@ function responseStatusUpdate(json) {
 
 function responseSetconversationMode(json) {
 
-}
-
-function responseRelogin(){
-    onRelogin();
 }
