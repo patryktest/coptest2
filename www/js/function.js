@@ -40,6 +40,7 @@ $(function() {
     
     monitor_events();  
     renderPopupMenu();
+    initPosition();
 });
 
 function initLocalStorage(){
@@ -89,6 +90,9 @@ function write(msg){
 function writeInfo(msg){
     if(DEBUG_MODE)
         console.info(msg);
+}
+function initPosition(){
+    $('.header-menu li').width(($(window).width()/4)-1);
 }
 
 
