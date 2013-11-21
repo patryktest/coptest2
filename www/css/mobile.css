@@ -41,6 +41,7 @@
     margin: 16px auto 0;
 }
 .header-menu li {
+    border-color: #D7E9F1;
     border-image: none;
     border-right: thin solid #D7E9F1;
     border-bottom: thim solid #D7E9F1;
@@ -183,7 +184,11 @@
     top: 60px;
 }
 
-#mainPageHeadT{
+#mainPageHeadT, #chatPageTitle{
     font-size: 15px;
 }
 
+#loginPage{
+    background: url("../img/loginBGbig.jpg") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
+    min-height: 462px;
+}
