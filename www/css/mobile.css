@@ -205,7 +205,8 @@
     line-height: 18px;
     padding: 0;
     text-align: center;
+    font-weight: normal;
 }
-#chatListT li{
+/*#chatListT li{
     height: 70px;
-}
+}*/
