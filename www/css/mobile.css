@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     width: 100%;
+    font-size: 0;
 }
 .icon-img {
     background: url("../img/mobile_icons.svg") no-repeat scroll 0 0 / 220px auto rgba(0, 0, 0, 0);
@@ -36,19 +37,19 @@
 }
 .header-menu li span {
     display: block;
-    margin: 14px auto 0;
+    margin: 16px auto 0;
 }
 .header-menu li {
-    border-color: -moz-use-text-color #D7E9F1 #D7E9F1 -moz-use-text-color;
     border-image: none;
     border-right: thin solid #D7E9F1;
+    border-bottom: thim solid #D7E9F1;
     border-style: none solid solid none;
     border-width: medium thin thin medium;
-    float: left;
     height: 50px;
     list-style: none outside none;
     margin-bottom: 10px;
     width: 24.5%;
+    display: inline-block;
 }
 .header-menu li.menu-d {
     border-right: medium none;
