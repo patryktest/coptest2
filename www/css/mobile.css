@@ -192,3 +192,20 @@
     background: url("../img/loginBGbig.jpg") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
     min-height: 462px;
 }
+/*show button*/
+#showContactsBtn li {
+    background: none repeat scroll 0 0 #D7E9F1;
+    max-height: 50px;
+    padding: 16px 0;
+}
+
+#showContactsBtn li a{
+    color: #1A1C3B;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 0;
+    text-align: center;
+}
+#chatListT li{
+    height: 70px;
+}

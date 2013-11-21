@@ -38,3 +38,13 @@
     width: 16px;
     background-size: 200px auto;
 }
+/*show button*/
+#showContactsBtn li{
+    background: none repeat scroll 0 0 #D7E9F1;   
+    max-height: 22px;
+}
+#showContactsBtn li a{
+    color: #1A1C3B;
+    padding: 0;
+    text-align: center;
+}

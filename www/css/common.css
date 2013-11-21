@@ -69,10 +69,6 @@
 }
 
 /*show button*/
-#showContactsBtn li{
-    background: none repeat scroll 0 0 #D7E9F1;   
-    max-height: 22px;
-}
 #showContactsBtn li:hover{
     background: none repeat scroll 0 0 #03B7E4;
 }
@@ -82,11 +78,7 @@
 #showContactsBtn li .ui-btn-inner{
     border: none;
 }
-#showContactsBtn li a{
-    color: #1A1C3B;
-    padding: 0;
-    text-align: center;
-}
+
 #showContactsBtn li:hover a{
     color: #FFFFFF;
 }
