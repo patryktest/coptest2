@@ -7,7 +7,8 @@
     font-size: 0;
 }
 .icon-img {
-    background: url("../img/mobile_icons.svg") no-repeat scroll 0 0 / 220px auto rgba(0, 0, 0, 0);
+    background: url("../img/mobile_icons.svg") no-repeat scroll;
+    background-size: 220px auto;
 }
 .icon-logo {
     background-position: -189px 0;
