@@ -22,3 +22,19 @@
     top: 3px;
     width: 15px;       
 }
+#chatBack{
+    background-position: -38px -17px;
+    width: 16px;
+}
+#chatBack, #contactback, #groupChatBack, #groupMenuBack {
+    background: url("../img/icons.svg") no-repeat scroll -95px 0px transparent;
+    border: medium none;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    height: 15px;
+    left: 10px;
+    text-decoration: none;
+    top: 22%;
+    width: 16px;
+    background-size: 200px auto;
+}
