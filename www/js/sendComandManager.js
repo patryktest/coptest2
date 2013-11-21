@@ -45,23 +45,27 @@ function commandOpenPrivateChat(friendId) {
 
 }
 
+function commandOnUpdateHistoryChat(friendId){
+    sendCommand('chat.getPrivateHistory', [user.id, friendId]);
+}
+
 function closePrivateChat(friendId) {
-    //console.log('close private chat: ' + user.id + ' with ' + friendId);
+    //write('close private chat: ' + user.id + ' with ' + friendId);
     sendCommand('chat.closePrivateConversation', [user.id, friendId]);
     onClosePrivateChatWindow(friendId);
 }
 
 function commandSendPrivateMessage(message) {
     if (getActiveConverastion() !== '' && message) {
-        //console.log('send private message to ' + actualOpeningChat + ' with text ' + message);
+        //write('send private message to ' + actualOpeningChat + ' with text ' + message);
         sendCommand('chat.sendPrivateMessage', [user.id, actualOpeningChat, message]);
     }
     else{
         if(getActiveConverastion()==="")
-            console.log('ERR send private message: friend ID missing');
+            write('ERR send private message: friend ID missing');
                 //alert('ERR send private message: friend ID missing');
         if(!message)
-            console.log('ERR send private message: message missing');
+            write('ERR send private message: message missing');
                 //alert('ERR send private message: message missing');
     }
         
@@ -77,11 +81,11 @@ function commandSendPrivateMessage(message) {
 
 function commandOpenGroupChat(groupName) {
     if(groupName!==""){
-        //console.log('creating Group with name: ' + groupName);
+        //write('creating Group with name: ' + groupName);
         sendCommand('chat.openGroupConversation', [user.id, groupName]);
     }
     else{
-        console.log('Missing Group name');
+        write('Missing Group name');
     }    
 }
 
@@ -92,7 +96,7 @@ function commandOpenGroupChat(groupName) {
  * @returns {undefined}
  */
 function commandCloseGroupChat(groupId) {
-    //console.log('close Group with ID: ' + groupId);
+    //write('close Group with ID: ' + groupId);
     sendCommand('chat.closeGroupConversation', [user.id, groupId]);
 }
 
@@ -104,7 +108,7 @@ function commandCloseGroupChat(groupId) {
  * @returns {undefined}
  */
 function commandAddUserToGroup(friendId, groupId) {
-    console.log('add user : ' + friendId + ' to group: ' + groupId);
+    write('add user : ' + friendId + ' to group: ' + groupId);
     sendCommand('chat.addUserToConversation', [friendId, groupId]);
 }
 
@@ -115,20 +119,20 @@ function commandAddUserToGroup(friendId, groupId) {
  * @returns {undefined}
  */
 function commandLeaveConversation(groupId, friendId) {
-    console.log('leave group ' + groupId);
+    write('leave group ' + groupId);
     sendCommand('chat.leaveConversation', [groupId, friendId]);
 }
 
 function sendGroupMessage(groupId, message) {
-    //console.log('send group message to ' + groupId+' with text: '+message);
+    //write('send group message to ' + groupId+' with text: '+message);
     sendCommand('chat.sendGroupMessage', [user.id, groupId, message]);
 }
  function setconversationMode(friendId, mode){
-     //console.log('set inkognito with: '+friendId+' to'+mode);
+     //write('set inkognito with: '+friendId+' to'+mode);
      sendCommand('chat.setconversationMode',[user.id,friendId,mode]);
  }
  function commandSetGroupName(groupId,newName){
-     //console.log('set new Group Name to group: '+groupId+' name:'+newName);
+     //write('set new Group Name to group: '+groupId+' name:'+newName);
      sendCommand('chat.setGroupName',[user.id,groupId,newName]); 
  }
  
@@ -140,8 +144,13 @@ function sendGroupMessage(groupId, message) {
   * @returns {undefined}
   */
  function confirmPrivateMessage(senderId,receiverId,timestamp,type){
-     console.log('confirm message id: '+senderId+' friendId:'+receiverId+' typ: '+type+' timeid: '+timestamp);
+     write('confirm message id: '+senderId+' friendId:'+receiverId+' typ: '+type+' timeid: '+timestamp);
      sendCommand('chat.confirmPrivateMessage',[receiverId,senderId,timestamp,type]); 
+ }
+ 
+ function commandPurgeHistory(friendId){
+     write('delet conversation with friendId: '+friendId);
+     sendCommand('chat.purgeHistory',[user.id,friendId,24]);
  }
 
 function sendCommand(command, params) {
@@ -171,6 +180,7 @@ function sendCommand(command, params) {
      connection.send(JSON.stringify({command: 'chat.setconversationMode', parameters: param}));         [id,idFriend,true/false]
      connection.send(JSON.stringify({command: 'chat.setGroupName', parameters: param}));                [id,idGroup,string new name] - send back responseGroupInfo()
      connection.send(JSON.stringify({command: 'chat.confirmPrivateMessage', parameters: param}));       [senderId,receiverId,timestamp,typ(private_message_status)]
+     connection.send(JSON.stringify({command: 'chat.purgeHistory', parameters: param}));                [int senderId,int receiverId,int timespan]
     
   
      */

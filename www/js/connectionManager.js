@@ -45,6 +45,9 @@ function connect() {
             case 'SERVER_PRIVATE_HISTORY':
                 responsePrivateHistory(json);
                 break;
+            case 'SERVER_PRIVATE_HISTORY_UPDATE':
+                responseUpdatePrivateHistory(json);
+                break;
             case 'SERVER_GROUP_MESSAGE':
                 responseGroupMessage(json);
                 break;

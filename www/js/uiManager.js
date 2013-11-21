@@ -202,6 +202,8 @@ function onShowMoreContacts(){
     $("#chatListT").hide();
     $("div[data-role='footer']").hide();
     $("#contactListElement form a").removeClass('ui-input-clear-hidden').addClass('ui-input-clear');
+    $("#mainPage .header-backBtn").removeClass('hidden');
+    $("#mainPageHeadT").html('Connections');
     
     
 }
@@ -211,6 +213,13 @@ function onHideMoreContacts(){
     $("#chatListT").show();
     $('#contactPageSmallMenu').css({display: 'none'});
     $("div[data-role='footer']").show();
+    $("#mainPage .header-backBtn").addClass('hidden');
+    $("#mainPageHeadT").html('Recent Conversations');
     clearSelectedFriendView();
     
+}
+
+function onFriendSubmenuOpen(){
+    showPopup(deleteConversation_popup);
+    $('#chatPageTemplate .ui-li-dateinfo').hide();
 }

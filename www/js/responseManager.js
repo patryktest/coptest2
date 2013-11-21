@@ -164,3 +164,8 @@ function responseStatusUpdate(json) {
 function responseSetconversationMode(json) {
 
 }
+
+function responseUpdatePrivateHistory(json){
+    commandOnUpdateHistoryChat(json.data.userId);
+    
+}

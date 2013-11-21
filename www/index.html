@@ -47,12 +47,12 @@
                         <li class="menu-d menu-disable" onclick=""><span class="icon-img icon-logo"></span></li>
                     </ul>
                 </div>
-                <h1 id="mainPageHeadT">UniqueChat</h1>  
+                <h1 id="mainPageHeadT">Recent Conversations</h1>  
                 <div class="header-status menu-enable">
                     <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
                  </div>
-                <div class="header-backBtn menu-enable">
-                    <a id="chatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                <div class="header-backBtn menu-enable hidden">
+                    <a id="chatBack" class="icon-img icon-back" onclick="onHideMoreContacts();"></a>
                 </div>
             </div>
 
@@ -127,6 +127,9 @@
                  </div>
                 <div class="header-backBtn menu-enable">
                     <a id="chatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                </div>
+                <div class="header-subMenu menu-enable">
+                    <a id="subMenu" class="icon-img icon-submenu" onclick="onFriendSubmenuOpen();"></a>
                 </div>
                 <div class="ui-li-dateinfo">Friday, 28th October 2013</div>
             </div>

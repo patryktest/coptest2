@@ -77,6 +77,7 @@
 }
 #showContactsBtn li .ui-btn-inner{
     border: none;
+    padding: 0;
 }
 
 #showContactsBtn li:hover a{
