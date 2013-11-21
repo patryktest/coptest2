@@ -48,7 +48,6 @@
     border-width: medium thin thin medium;
     height: 50px;
     list-style: none outside none;
-    margin-bottom: 10px;
     width: 24.5%;
     display: inline-block;
 }
@@ -182,5 +181,9 @@
     position: absolute;
     left: 20px;
     top: 60px;
+}
+
+#mainPageHeadT{
+    font-size: 15px;
 }
 
