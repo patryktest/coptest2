@@ -35,7 +35,7 @@ function onUserLogin() {
 
 function onLogout(){
     user = {};
-    window.location.replace = '#loginPage';
+    navigator.app.exitApp();
 }
 
 function onGoToMainPage(){

@@ -67,7 +67,7 @@ function init_events() {
     });
     
     document.addEventListener("backbutton", function(e){
-        if($.mobile.activePage.is('#mainPage')){
+        if($.mobile.activePage.is('#mainPage') || $.mobile.activePage.is('#loginPage')){
             e.preventDefault();
             navigator.app.exitApp();
         }

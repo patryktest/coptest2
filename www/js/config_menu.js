@@ -1,4 +1,4 @@
-main_menu = [{icon: 'logout', text: 'Logout', float: 'left', onclick: 'setStatus(\"' + user_status.offline + '\")'}];
+main_menu = [{icon: 'logout', text: 'Logout', float: 'left', onclick: 'logout()'}];
 
 status_menu = [
     {icon: 'online', text: 'online', float: 'right', onclick: 'setStatus(\"' + user_status.online + '\")', textColor: user_status.online},

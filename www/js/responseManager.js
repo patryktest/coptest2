@@ -13,6 +13,7 @@ function responseLogin(json) {
 
 function responseLogout(json) {
     write('responseLogout: OK');
+    onLogout();
 }
 
 function responseFriendListUpdate() {
