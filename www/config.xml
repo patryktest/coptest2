@@ -72,6 +72,7 @@
 
   <!-- Expose access to all URIs, including the file and http protocols -->
   <access subdomains="true" uri="*" />
+  <access subdomains="true" uri="https://dev.uniquedoc.com/" />
 
   <icon rim:hover="false" src="res/icon/blackberry/icon-80.png" />
   <icon rim:hover="true" src="res/icon/blackberry/icon-80.png" />
