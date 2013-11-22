@@ -214,9 +214,9 @@
 
 #loginPage{
     background: url("../img/loginBG.jpg") no-repeat fixed;
-    /*min-height: 462px;
+    /*min-height: 462px;*/
     background-size: cover;
-    background-position: center center;*/
+    background-position: center center;
 }
 /*show button*/
 #showContactsBtn li {
