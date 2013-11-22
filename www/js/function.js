@@ -38,7 +38,7 @@ $(function() {
         ;
     });
     
-    monitor_events();  
+    init_events();  
     renderPopupMenu();
     initPosition();
 });
@@ -50,7 +50,7 @@ function initLocalStorage(){
     $('#passwordI').val(ls.pass);
     
 }
-function monitor_events() {
+function init_events() {
     $("body").on("FilterInputCreated", function(event){
         
         $('#contactListElement form a').click(function () {
@@ -65,6 +65,16 @@ function monitor_events() {
         });
         
     });
+    
+    document.addEventListener("backbutton", function(e){
+        if($.mobile.activePage.is('#mainPage')){
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+        else {
+            //navigator.app.backHistory()
+        }
+    }, false);
 }
 
 /*function hideLetterDividers(){
