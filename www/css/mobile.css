@@ -11,9 +11,9 @@
     background-size: 220px auto;
 }
 .icon-logo {
-    background-position: -189px 0;
+    background: url("../img/icon_logo.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
     height: 20px;
-    width: 20px;
+    width: 31px;
 }
 .icon-box {
     background-position: -69px 0;

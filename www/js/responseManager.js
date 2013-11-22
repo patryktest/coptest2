@@ -170,3 +170,7 @@ function responseUpdatePrivateHistory(json){
     commandOnUpdateHistoryChat(json.data.userId);
     
 }
+
+function responseRelogin(){
+    onRelogin();
+}

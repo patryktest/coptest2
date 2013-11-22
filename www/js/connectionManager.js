@@ -76,6 +76,9 @@ function connect() {
             case 'SERVER_GROUP_CLOSE':
                 responseGroupClose(json);
                 break;
+            case 'SERVER_RELOGIN':
+                responseRelogin();
+                break;
             case 'SERVER_':
                 responseSetconversationMode(json);
                 break; 

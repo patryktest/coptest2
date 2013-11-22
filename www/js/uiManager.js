@@ -37,6 +37,10 @@ function onLogout(){
     user = {};
     navigator.app.exitApp();
 }
+function onRelogin(){
+    user = {};
+    $.mobile.changePage( "index.html#loginPage" );
+}
 
 function onGoToMainPage(){
     setActiveConverastion('');
