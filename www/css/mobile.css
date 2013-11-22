@@ -57,6 +57,8 @@
     height: 16px;
     margin-top: 4px;
     transform: rotate(90deg);
+    -ms-transform:rotate(90deg); /* IE 9 */
+    -webkit-transform:rotate(90deg); /* Safari and Chrome */
     width: 10px;
 }
 .user-delet-icon {
@@ -211,8 +213,9 @@
 }
 
 #loginPage{
-    background: url("../img/loginBGbig.jpg") no-repeat fixed center center / cover rgba(0, 0, 0, 0);
+    background: url("../img/loginBGbig.jpg") no-repeat fixed center center;
     min-height: 462px;
+    background-size: cover;
 }
 /*show button*/
 #showContactsBtn li {
