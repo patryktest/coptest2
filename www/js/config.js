@@ -30,9 +30,9 @@ document.write(scriptTags.join(""));
 
 USER_ID = '';
 USER_SESSION = '';
-DEBUG_MODE = true;
+DEBUG_MODE = false;
 if(DEBUG_MODE)
-    WEBSOCKETLINK =  'ws://dev.uniquedoc.com:8180/UniquedocChat';//'ws://192.168.2.40:8180/UniquedocChat';
+    WEBSOCKETLINK =  /*'ws://dev.uniquedoc.com:8180/UniquedocChat';//*/'ws://192.168.2.40:8180/UniquedocChat';
 else
     WEBSOCKETLINK =  'ws://dev.uniquedoc.com:8180/UniquedocChat';
 user_device = {

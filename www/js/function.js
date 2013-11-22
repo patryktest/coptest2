@@ -45,7 +45,7 @@ $(function() {
 
 function initLocalStorage(){
     ls = new LocalStorage();
-    $('#saveLoginCheckBox input').attr("checked",ls.checked);
+    //$('#saveLoginCheckBox input').attr("checked",ls.checked);
     $('#loginI').val(ls.name);
     $('#passwordI').val(ls.pass);
     

@@ -53,6 +53,7 @@
     border: medium none;
     font-size: 15px;
     font-weight: bold;
+    color: #1B699B;
 }
 
 #chatPageTemplate .messageSendBox input,#groupChatPageTemplate .messageSendBox input {
