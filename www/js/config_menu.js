@@ -9,10 +9,13 @@ status_menu = [
 ];
 
 friend_sub_menu = [
-    {icon: 'groupMembers', text: 'Group members', float: 'left', onclick: ''},
-    {icon: 'delete', text: 'Delete this conversation', float: 'left', onclick: ''},
+    {icon: 'delete', text: 'Delete this conversation', float: 'left', onclick: 'onDeletConversationConfirmPopup()'},
+]
+
+group_sub_menu = [
+    {icon: 'groupMembers', text: 'Group members', float: 'left', onclick: 'onManageGroupMembers()'},
 ]
 
 
-deleteConversation_popup = {text: 'Are you sure you want to delete the last 24 hours of this conversation?', ok_btn_text: 'Delete', ok_btn_onclick: '', cancel_btn_text: 'Cancel', cancel_btn_onclick: ''};
+deleteConversation_popup = {text: 'Are you sure you want to delete the last 24 hours of this conversation?', ok_btn_text: 'Delete', ok_btn_onclick: 'commandPurgeHistory(getActiveConverastion())', cancel_btn_text: 'Cancel', cancel_btn_onclick: ''};
 

@@ -48,3 +48,20 @@
     padding: 0;
     text-align: center;
 }
+.user-delet-icon {
+    background: url("../img/icons.svg") repeat scroll -83px 0px transparent;
+    height: 11px;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    width: 9px;
+    background-size: 150px auto;
+}
+#contactPageSmallMenu a {
+    display: block;
+    padding: 16px 0 0;
+}
+#contactPageSmallMenu li {
+    min-height: 50px;
+    background: none repeat scroll 0 0 #FFFFFF;
+}

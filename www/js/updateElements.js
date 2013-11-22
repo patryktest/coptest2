@@ -127,13 +127,13 @@ function updateSelectedFriendView() {
                                 ' + user.friendList[i].name + '\n\
                             </a>\n\
                             <span class="user-delet-icon"></span>\n\
-                            <span class="user-status-icon ui-icon-' + user.friendList[i].status + ' device-mobile"></span>\n\
                     </div>\n\
                 </div>\n\
                 </li>');
             }
         }
     }
+     /*<span class="user-status-icon ui-icon-' + user.friendList[i].status + ' device-mobile"></span>\n\  in html5 chat add after delet-icon*/
 
 }
 
@@ -149,9 +149,7 @@ function updateGroupManageListSelectFriend(id, command) {
 
 
 }
-function updateSelectedFriendInGroupView(){
-    $('#manageGroupContactT').html('Manage Group');
-    
+function updateSelectedFriendInGroupView(){    
     if (selectedFriend.length)
         $('#manageGroupContactPage #contactPageSmallMenu').css({display: 'block'});
     else
@@ -172,13 +170,14 @@ function updateSelectedFriendInGroupView(){
                                 ' + user.friendList[i].name + '\n\
                             </a>\n\
                             <span class="user-delet-icon"></span>\n\
-                            <span class="user-status-icon ui-icon-' + user.friendList[i].status + ' device-mobile"></span>\n\
                     </div>\n\
                 </div>\n\
                 </li>');
             }
         }
     }
+    
+    /*<span class="user-status-icon ui-icon-' + user.friendList[i].status + ' device-mobile"></span>\n\  in html5 chat add after delet-icon*/
 
     
 }

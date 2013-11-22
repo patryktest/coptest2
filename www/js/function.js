@@ -92,7 +92,8 @@ function writeInfo(msg){
         console.info(msg);
 }
 function initPosition(){
-    $('.header-menu li').width(($(window).width()/4)-1.1);
+    //$('.header-menu li').width(($(window).width()-4)/4+"%");
+    $('.header-menu li').width("24%");
 }
 
 

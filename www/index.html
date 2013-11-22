@@ -26,12 +26,23 @@
         <!-----------------------------------------------------------------------------------------------------------------------------login page------->
         <div data-role="page" id="loginPage" data-theme="d">
             <div data-role="content">
-                <!-- <p class="login_logo"></p> -->
+               <p class="login_logo"></p>
                 <p>
-                    <input data-corners="false" type="text" id="loginI" value=""/>
-                    <input data-corners="false" type="password" id="passwordI" value=""/>
+                <!--<ul>
+                    <li><input type="text" id="loginI" value=""</li>
+                    <li><input type="password" id="passwordI" value=""</li>
+                    <li><button onclick="commandLoginMainPage($('#loginI').val(), $('#passwordI').val());" id="loginButton">Login</button></li>
+                    <li><span id="connectionON">Network status...</span></li>
+                </ul>-->
+                    
+                    <input data-corners="false" type="text" id="loginI" value="" placeholder="Email address"/>
+                    <input data-corners="false" type="password" id="passwordI" value="" placeholder="Password"/>
+                    <a class="login-link" href="https://dev.uniquedoc.com/">Forget your password or PIN?</a>
                     <button data-corners="false" onclick="commandLoginMainPage($('#loginI').val(), $('#passwordI').val());" id="loginButton" disabled="">Login</button>
+                    <span class="login-text">New to Uniquedoc?</span>
+                    <a class="login-link login-link-bigger" href="https://dev.uniquedoc.com/">Register at uniquedoc.com</a>
                     <span id="connectionON">Network status...</span>                    
+                    
                 </p>
 
             </div>
@@ -96,12 +107,10 @@
                 <ul id="contactList-selectedFriendT" data-role="listview" class="ui-listview">
 
                 </ul>
-                <ul data-role="listview" id="contactPageSmallMenu">
-                    <li data-icon="false" class="manageGroupMembers">
-                        <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">
-                            <a onclick="onOkManageGroupMembers();" href=""><span class="manageGroupMembers_ok"></span></a>
-                            <a onclick="onCancelManageGroupMembers();" href=""><span class="manageGroupMembers_cancel"></span></a>
-                        </div>
+                <ul data-role="none" id="contactPageSmallMenu">
+                    <li data-role="none" class="manageGroupMembers">                        
+                            <a data-role="none" class="ok_button button" onclick="onOkManageGroupMembers();">Add new members</a>
+                            <!--<a onclick="onCancelManageGroupMembers();" href=""><span class="manageGroupMembers_cancel"></span></a>-->
                     </li>
                 </ul>
 
@@ -129,7 +138,7 @@
                     <a id="chatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
                 </div>
                 <div class="header-subMenu menu-enable">
-                    <a id="subMenu" class="icon-img icon-submenu" onclick="onFriendSubmenuOpen();"></a>
+                    <a id="subMenu" class="icon-img icon-submenu" onclick="onSubmenuOpen(friend_sub_menu);"></a>
                 </div>
                 <div class="ui-li-dateinfo">Friday, 28th October 2013</div>
             </div>
@@ -166,6 +175,9 @@
                  </div>
                 <div class="header-backBtn menu-enable">
                     <a id="groupChatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                </div>
+                <div class="header-subMenu menu-enable">
+                    <a id="subMenu" class="icon-img icon-submenu" onclick="onSubmenuOpen(group_sub_menu);"></a>
                 </div>
                 <!--
                 <div data-type="horizontal" data-role="controlgroup" class="ui-btn-right">

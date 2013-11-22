@@ -50,11 +50,14 @@
     width: 80%;
 }
 #loginPage input {
-    border: none;
+    border: medium none;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 #chatPageTemplate .messageSendBox input,#groupChatPageTemplate .messageSendBox input {
     border: medium none;
+    color: #1A1C3B;
 }
 .messageSendBox {
     border: thin solid #D7E9F1;

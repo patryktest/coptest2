@@ -97,7 +97,7 @@ function renderSelectFriendUl(){
     var html = '<ul id="contactList-selectedFriendT" data-role="listview" class="ui-listview">\n\
                 </ul>\n\
                 <ul data-role="listview" id="contactPageSmallMenu">\n\
-                    <li data-icon="false" class="btn_openPrivateGroupChat"><a onclick="onOpenPrivateGroupChat();" href=""><span class="smallMenuBtn"></span></a></li>\n\
+                    <li data-icon="false" class="btn_openPrivateGroupChat"><a class="ok_button button" onclick="onOpenPrivateGroupChat();" href="">Start text chat</a></li>\n\
                 </ul>\n\ ';
     html
     $("#contactListElement form").after(html);

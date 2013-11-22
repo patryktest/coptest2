@@ -59,6 +59,15 @@
     transform: rotate(90deg);
     width: 10px;
 }
+.user-delet-icon {
+    background: url("../img/icons.svg") repeat scroll -83px 0px transparent;
+    height: 11px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 9px;
+    background-size: 150px auto;
+}
 .header-menu li span {
     display: block;
     margin: 16px auto 0;
@@ -100,7 +109,7 @@
 .popup-screen {
     left: 0;
     position: absolute;
-    top: 86px;
+    top: 93px;
     width: 100%;
 }
 #UDPopup {
@@ -196,8 +205,9 @@
     top: 60px;
 }
 
-#mainPageHeadT, #chatPageTitle, #groupChatPageT{
+#mainPageHeadT, #chatPageTitle, #groupChatPageT, #manageGroupContactT{
     font-size: 15px;
+    margin: 0.6em 60px 0.8em;
 }
 
 #loginPage{
@@ -222,3 +232,86 @@
 /*#chatListT li{
     height: 70px;
 }*/
+.popup-text {
+    color: #03B7E4;
+    padding: 30px 12px;
+    text-align: center;
+}
+.popup-screen .popup-li {
+    border: medium none;
+    text-align: center;
+}
+.ok_button {
+    background: #29AB49;
+    color: white;
+    text-shadow: none;
+    border-radius: 20px;
+    padding: 5px 40px;
+}
+.cancel_button {
+    color: #1B699B;
+    text-shadow: none;
+    background: #B2CCDD;
+    padding: 5px 40px;
+    border-radius: 20px;
+}
+.ok_button:hover {
+    color: black;
+}
+.cancel_button:hover {
+    color: white;
+}
+.button {
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+#loginPage .ui-btn {
+    background: #29AB49;
+    border: none;
+    box-shadow: none;
+    border-radius: 20px;
+    color: white;
+    width: 100px;
+    margin: 0 auto;
+    text-shadow: none;
+}
+#loginPage .ui-btn-hover-d{
+    color: black;
+}
+
+#loginPage .login-link {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.11);
+    border-radius: 20px;
+    color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    margin: 6px auto;
+    padding: 4px 19px;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: none;
+    width: 170px;
+    font-weight: normal;
+}
+#loginPage .login-link-bigger {
+    font-size: 13px;
+    font-weight: bold;
+    padding: 12px 19px;
+}
+
+#loginPage .login-text {
+    color: #FFFFFF;
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    margin: 20px auto 0;
+    text-align: center;
+    text-shadow: none;
+    width: 170px;
+}
+#contactPageSmallMenu li {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 30px 0;
+    text-align: center;
+}

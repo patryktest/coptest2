@@ -108,9 +108,11 @@ function onCloseGroupChatWindow(){
         updateContactListView();
 }*/
 
-function onManageGroupMembers(group){
+function onManageGroupMembers(){
+    var group = user.getGroupById(getActiveGroupChat());
     var userlength = group.users.length;
     $.mobile.changePage( "index.html#manageGroupContactPage" );
+    $('#manageGroupContactT').html('Group members');
     
     $('#manageGroupContactPage #contactListT').html("")
         renderGroupManageContactList();
@@ -141,7 +143,7 @@ function onGroupPopupMenu(command){
     
     
     switch(command){
-        case 'manage': mannage_group_conntact = true; onManageGroupMembers(group); break;
+        case 'manage': mannage_group_conntact = true; onManageGroupMembers(); break;
         case 'rename': mannage_group_name = true; renderPopupGroupMenu('<input type="text" id="inputGroupName" placeholder="'+group.name+'"/>','back','rename',setNamefunction);$('#popupGroupMenu').popup('open'); break;
         case 'leave':  renderPopupGroupMenu('Are you sure you want to leave group?','no','yes',leavefunction);$('#popupGroupMenu').popup('open');break;
         case 'close':  renderPopupGroupMenu('Are you sure you want to close group?','no','yes',closefunction);$('#popupGroupMenu').popup('open');break;
@@ -219,7 +221,11 @@ function onHideMoreContacts(){
     
 }
 
-function onFriendSubmenuOpen(){
+function onSubmenuOpen(submenu){
+    showMenu(submenu);
+    $('#chatPageTemplate .ui-li-dateinfo').hide();
+}
+function onDeletConversationConfirmPopup(){
     showPopup(deleteConversation_popup);
     $('#chatPageTemplate .ui-li-dateinfo').hide();
 }
