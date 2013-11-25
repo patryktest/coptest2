@@ -3,6 +3,7 @@
  */
 function renderRecentConversations() {
     var element = $('#chatListElement');
+	element.html("");
 
     var elementUl = document.createElement('ul');
     elementUl.setAttribute('data-role', 'listview');
@@ -20,7 +21,7 @@ function renderRecentConversations() {
  */
 function renderContactList() {
     var element = $('#contactListElement');
-    
+    element.html("");
     var elementUl = document.createElement('ul');
     elementUl.setAttribute('data-role', 'listview');
     elementUl.setAttribute('id', 'contactListT');
