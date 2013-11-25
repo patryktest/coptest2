@@ -16,43 +16,43 @@
     width: 31px;
 }
 .icon-box {
-    background-position: -69px 0;
+    background-position: 0 -281px;
     height: 20px;
     width: 18px;
 }
 .icon-chat {
-    background-position: -173px -19px;
-    height: 20px;
-    width: 17px;
+    background-position: -163px -228px;
+    height: 19px;
+    width: 16px;
 }
 .icon-menu {
-    background-position: -91px -56px;
+    background-position: -85px -121px;
     height: 20px;
     width: 18px;
 }
 .icon-back {
-    background-position: -79px -55px;
+    background-position: -74px -121px;
     display: block;
     height: 20px;
     width: 12px;
 }
 .icon-groupMembers {
-    background-position: -147px -55px;
-    height: 20px;
-    width: 18px;
+    background-position: -138px -122px;
+    height: 19px;
+    width: 17px;
 }
 .icon-delete {
-    background-position: -128px -55px;
-    height: 20px;
+    background-position: -121px -123px;
+    height: 18px;
     width: 18px;
 }
 .icon-logout {
-    background-position: -110px -54px;
+    background-position: -103px -121px;
     height: 20px;
     width: 18px;
 }
 .icon-submenu{
-    background-position: -76px -19px;
+    background-position: -166px -104px;
     display: block;
     height: 16px;
     margin-top: 4px;
@@ -90,7 +90,7 @@
     border-right: medium none;
 }
 .header-menu li.menu-enable.menu-a:hover > span {
-    background-position: 0 0;
+    background-position: -85px -191px;
 }
 .header-menu li.menu-enable.menu-b:hover > span {
     background-position: 0 0;
@@ -101,12 +101,18 @@
 .header-menu li.menu-enable.menu-d:hover > span {
     background-position: 0 0;
 }
+.icon-submenu:hover {
+    background-position: -166px -175px;
+}
 .popup-screen-bg {
     background: none repeat scroll 0 0 #000000;
     height: 100%;
     opacity: 0.5;
     position: absolute;
     width: 100%;
+}
+.popup-screen-bg-overview {
+    height: 93px;
 }
 .popup-screen {
     left: 0;
@@ -123,9 +129,6 @@
     width: 100%;
     z-index: 9998;
 }
-.ui-mobile .ui-header {
-    z-index: 9999;
-}
 .popup-screen ul {
     background: none repeat scroll 0 0 #FFFFFF;
     list-style: none outside none;
@@ -133,7 +136,7 @@
     padding: 0;
     width: 100%;
 }
-.popup-icon-left, .popup-icon-right {
+.popup-icon-left {
     float: left;
     margin: 12px 15px 0;
 }
@@ -152,6 +155,8 @@
 }
 .popup-icon-right {
     float: right;
+	margin: 15px 15px 0;
+	
 }
 .menu-text-right {
     right: 50px;
@@ -159,6 +164,27 @@
 }
 .menu-text-left {
     left: 50px;
+}
+
+.icon-online, .icon-away, .icon-emergency, .icon-invisible, .icon-offline {
+    border-radius: 20px;
+    width: 15px;
+    height: 15px;
+}
+.icon-online{
+    background: #00CC99;
+}
+.icon-away{
+	background: #00CCCC;
+}
+.icon-emergency{
+	background: #FF6600;
+}
+.icon-invisible{
+	background: #FFFF99;
+}
+.icon-offline{
+	background: #CCCCCC;
 }
 
 .menu-text-color-CHAT_STATUS_ONLINE{
@@ -175,6 +201,9 @@
 }
 .menu-text-color-CHAT_STATUS_INVISIBLE {
     color: #FFFF99;
+}
+.menu-text-color-light_blue{
+	color: #B2CCDD;
 }
 
 .menu-enable{
@@ -318,4 +347,14 @@
     background: none repeat scroll 0 0 #FFFFFF;
     padding: 30px 0;
     text-align: center;
+}
+#chatBack:hover, #contactback:hover, #groupChatBack:hover, #groupMenuBack:hover {
+    background-position: -74px -192px;
+}
+
+.menu-status-icon {
+    display: none;
+}
+li.menu-status:hover > span.menu-status-icon {
+    display: block;
 }

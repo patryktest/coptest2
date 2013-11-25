@@ -148,8 +148,8 @@ function updateFriendElementF(status,device){
         var avatar = null;
         numberMessageItemGroup = 0;
 
-        if (historyLength > 4)
-            i = historyLength - 4;
+        if (historyLength > 40)
+            i = historyLength - 40;
 
         for (i; i < historyLength; i++) {
 

@@ -65,3 +65,6 @@
     min-height: 50px;
     background: none repeat scroll 0 0 #FFFFFF;
 }
+#chatBack:hover, #contactback:hover, #groupChatBack:hover, #groupMenuBack:hover {
+    background-position: -95px -47px;
+}

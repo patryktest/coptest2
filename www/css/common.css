@@ -42,7 +42,7 @@
 }
 
 .ui-li-message-text {
-    /*display: inline-block;*/
+    display: inline-block;
     font-size: 10pt;
     /*line-height: 12pt;*/
     overflow: hidden;

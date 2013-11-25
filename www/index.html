@@ -53,7 +53,7 @@
                 <div class="header-menu">
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
-                        <li class="menu-b menu-enable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
                         <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
@@ -89,7 +89,7 @@
                 <div class="header-menu">
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
-                        <li class="menu-b menu-enable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
                         <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
@@ -125,7 +125,7 @@
                 <div class="header-menu">
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
-                        <li class="menu-b menu-enable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
                         <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
@@ -164,7 +164,7 @@
                 <div class="header-menu">
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
-                        <li class="menu-b menu-enable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
                         <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
@@ -207,7 +207,7 @@
                 <div class="header-menu">
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
-                        <li class="menu-b menu-enable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
                         <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
@@ -243,36 +243,9 @@
             </div>
         </div>
         <!--------------------------------------------------------------------------------------------------------------------------------- page------->
-        <div data-role="page" id="chatPage">
-            <div data-role="header">
-                <h1>Chat window</h1>  
-                <button onclick="logout();">Logout</button>
-            </div>
 
-            <div data-role="content">
-                <ul data-role="listview" id="messageArray" data-theme="e">
-                    <li class="ui-li ui-li-static ui-btn-up-c">test :messafe</li>
-                </ul>
-                <p>
-                    <input type="text" id="input"/>
-
-                    <button onclick="openPrivateChat(8);">Open chat</button>
-                    <button onclick="closePrivateChat(8);">Close chat</button>
-
-                    <button onclick="openGroupChat('test G1');">Open group</button>
-                    <button onclick="closeGroupChat(7551);">Close group 7551</button>
-                    <button onclick="addUserToGroup(8, 4194);">Add user 8 to group 4194</button>
-
-                    <button onclick="leaveConversation(3751);">Leave conver 3751</button>
-
-                    <button onclick="sendGroupMessage(4194, 'test message from web to group');">send mess to 4194</button>
-
-
-                </p>
-
-            </div>
-        </div>
         <div id="UDPopup">
+            <div class="popup-screen-bg-overview" onclick="hideMenu()"></div>
             <div class="popup-screen-bg" onclick="hideMenu()"></div>
             <div class="popup-screen">
                 <ul>

@@ -70,7 +70,7 @@
     right: 33px;
 }
 .ui-footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
 }
@@ -556,9 +556,7 @@
 #contactLink:hover {
     background-position: -78px -63px;
 }
-#chatBack:hover, #contactback:hover, #groupChatBack:hover, #groupMenuBack:hover {
-    background-position: -95px -47px;
-}
+
 .smallMenuBtn:hover {
     background-position: -158px -64px;
 }

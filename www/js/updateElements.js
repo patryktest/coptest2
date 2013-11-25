@@ -211,10 +211,11 @@ function updateStatusIcon(statusNew, statusOld) {
 
 function updateDateBar(){
     var dateTag = $(".ui-li-chat-date");
+	var headerHeight = $('#chatPageTemplate .ui-header').height();
     //$(".ui-li-chat-date").first().hide();   
     
     for(var i=0;i<dateTag.length;i++){
-        if(dateTag[i].offsetTop-window.scrollY<20)
+        if(dateTag[i].offsetTop-window.scrollY<headerHeight)
             $(".ui-li-dateinfo").text(dateTag[i].textContent);   
     }    
 }
