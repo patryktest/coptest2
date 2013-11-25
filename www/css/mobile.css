@@ -8,7 +8,7 @@
 }
 .icon-img {
     background: url("../img/mobile_icons.svg") no-repeat scroll;
-    background-size: 220px auto;
+    background-size: 230px auto;
 }
 .icon-logo {
     background: url("../img/icon_logo.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
@@ -16,38 +16,38 @@
     width: 31px;
 }
 .icon-box {
-    background-position: 0 -281px;
+    background-position: 0 -294px;
     height: 20px;
-    width: 18px;
+    width: 20px;
 }
 .icon-chat {
-    background-position: -163px -228px;
+    background-position: -171px -239px;
     height: 19px;
     width: 16px;
 }
 .icon-menu {
-    background-position: -85px -121px;
+    background-position: -90px -127px;
     height: 20px;
     width: 18px;
 }
 .icon-back {
-    background-position: -74px -121px;
+    background-position: -77px -127px;
     display: block;
     height: 20px;
     width: 12px;
 }
 .icon-groupMembers {
-    background-position: -138px -122px;
+    background-position: -146px -128px;
     height: 19px;
     width: 17px;
 }
 .icon-delete {
-    background-position: -121px -123px;
+    background-position: -126px -128px;
     height: 18px;
     width: 18px;
 }
 .icon-logout {
-    background-position: -103px -121px;
+    background-position: -109px -127px;
     height: 20px;
     width: 18px;
 }
@@ -90,7 +90,7 @@
     border-right: medium none;
 }
 .header-menu li.menu-enable.menu-a:hover > span {
-    background-position: -85px -191px;
+    background-position: -90px -201px;
 }
 .header-menu li.menu-enable.menu-b:hover > span {
     background-position: 0 0;
@@ -102,7 +102,7 @@
     background-position: 0 0;
 }
 .icon-submenu:hover {
-    background-position: -166px -175px;
+    background-position: -173px -185px;
 }
 .popup-screen-bg {
     background: none repeat scroll 0 0 #000000;
@@ -349,7 +349,7 @@
     text-align: center;
 }
 #chatBack:hover, #contactback:hover, #groupChatBack:hover, #groupMenuBack:hover {
-    background-position: -74px -192px;
+    background-position: -77px -200px;
 }
 
 .menu-status-icon {

@@ -19,7 +19,8 @@ var jsFiles = [
     "js/localStorage.js",
     "js/date.js",
     "js/config_menu.js",
-    "js/menu.js"
+    "js/menu.js",
+    "js/search.js"
 ];
 var scriptTags = new Array(jsFiles.length);
 for (var i = 0, len = jsFiles.length; i < len; i++) {

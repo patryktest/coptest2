@@ -148,9 +148,9 @@ function updateFriendElementF(status,device){
         var avatar = null;
         numberMessageItemGroup = 0;
 
-        if (historyLength > 40)
+        /*if (historyLength > 40)
             i = historyLength - 40;
-
+		*/
         for (i; i < historyLength; i++) {
 
             if (this.history[i].senderId === user.id) {
