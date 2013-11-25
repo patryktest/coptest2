@@ -358,3 +358,6 @@
 li.menu-status:hover > span.menu-status-icon {
     display: block;
 }
+#mainPage .ui-footer {
+    position: absolute;
+}
