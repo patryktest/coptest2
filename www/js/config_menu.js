@@ -9,7 +9,8 @@ status_menu = [
 ];
 
 friend_sub_menu = [
-    {icon: 'delete', text: 'Delete this conversation', float: 'left', onclick: 'onDeletConversationConfirmPopup()',textColor: 'light_blue'},
+    {icon: 'delete', text: 'Delete last 24h of chat', float: 'left', onclick: 'onDeletConversationConfirmPopup()',textColor: 'light_blue'},
+    {icon: 'search', text: 'Search chat', float: 'left', onclick: 'searchInPrivateChat(this.value)',textColor: 'light_blue',menuType:'input'}
 ]
 
 group_sub_menu = [

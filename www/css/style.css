@@ -43,7 +43,7 @@
     padding: 0;
     min-height: 30px;
     border:none;
-    padding: 0 0 10px;
+    padding: 6px 0 10px;
 }
 #chatHistory li.dark, #groupChatHistory li.dark {
     background: #EFF9FF;

@@ -3,6 +3,7 @@ function showMenu(_menu){
    var color = "default";
    var liClass = "";
    var spanClass = "";
+   var menuType = 'normal';
 		
    var menuElement = $('#UDPopup .popup-screen ul');
     var htmltext = "";
@@ -14,10 +15,17 @@ function showMenu(_menu){
 	   		liClass = menu[i].liClass;
    		if(menu[i].spanClass != null)
 			spanClass = menu[i].spanClass;
-		
+                if(menu[i].menuType != null)
+                        menuType = menu[i].menuType;
+                    
         htmltext = '<li class="menu-enable '+liClass+'" onclick=\'hideMenu();'+menu[i].onclick+';\'>\n\
                     <span class="icon-img icon-'+menu[i].icon+' icon-menu popup-icon-'+menu[i].float+' '+spanClass+'"></span>\n\
                     <span class="menu-text-'+menu[i].float+' menu-text-color-'+color+'">'+menu[i].text+'</span>\n\
+                    </li>';
+        if(menuType=="input")
+            htmltext = '<li class="menu-enable '+liClass+'">\n\
+                    <span class="icon-img icon-'+menu[i].icon+' icon-menu popup-icon-'+menu[i].float+' '+spanClass+'"></span>\n\
+                    <span class="menu-text-'+menu[i].float+' menu-text-color-'+color+'"><input onkeydown="if(event.keyCode ==13){hideMenu();'+menu[i].onclick+';}" type="text" id="" value="" placeholder="'+menu[i].text+'"/></span>\n\
                     </li>';
         menuElement.append(htmltext);
     }

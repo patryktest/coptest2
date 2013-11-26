@@ -105,7 +105,7 @@
     background-position: -173px -185px;
 }
 .popup-screen-bg {
-    background: none repeat scroll 0 0 #000000;
+    background: none repeat scroll 0 0 #16699B;
     height: 100%;
     opacity: 0.5;
     position: absolute;
@@ -360,4 +360,11 @@ li.menu-status:hover > span.menu-status-icon {
 }
 #mainPage .ui-footer {
     position: absolute;
+}
+
+.findText{
+    background: yellow;
+}
+.findText-hover{
+    background: greenyellow;
 }
