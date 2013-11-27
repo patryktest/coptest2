@@ -368,10 +368,10 @@ li.menu-status:hover > span.menu-status-icon {
 }
 
 .findText{
-    background: yellow;
+    background: none repeat scroll 0 0 rgba(246, 171, 40, 0.5);
 }
 .findText-hover{
-    background: greenyellow;
+    background: none repeat scroll 0 0 #F6AB28;
 }
 .input-search-in-chat {
     border: none;

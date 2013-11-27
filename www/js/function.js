@@ -103,7 +103,11 @@ function writeInfo(msg){
 }
 function initPosition(){
     //$('.header-menu li').width(($(window).width()-4)/4+"%");
-    $('.header-menu li').width("24%");
+    $('.header-menu li').width("24%");    
+}
+function resizeSendBar(){
+    console.log($('.messageSendBox').width(),$('.block-button-send').width());
+    //$(".block-input-send").width($('.messageSendBox').width()-$('.block-button-send').width()-20);
 }
 
 

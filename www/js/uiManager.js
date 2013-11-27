@@ -54,7 +54,9 @@ function onGoToMainPage(){
 
 function onOpenPrivateChatWindow(id){
     
-    $.mobile.changePage( "index.html#chatPageTemplate");    
+    $.mobile.changePage( "index.html#chatPageTemplate",{transition:"slide"});  
+    resizeSendBar();
+    
     var friend = user.getFriendById(id);
     
     $('#chatHistoryElementPlace').html(friend.historyElement);
