@@ -1,20 +1,31 @@
 function LocalStorage() {
-    this.name = '';
-    this.pass = '';
-    this.checked = false;
-    this.save = save;
-    this.get = get;
-    this.get();
+    this.name = getName();
+    this.pass = getPass();
+    this.autoLogin = getAutoLogin();
+    this.setName = _setName;
+    this.setPass = _setPass;
+    this.setAutoLogin = _setAutoLogin;
 
-    function save(name, pass,checked) {
-        window.localStorage.setItem('name', name);
-        window.localStorage.setItem('pass', pass);
-        window.localStorage.setItem('checked', checked);
+    function getName(){
+        var name = window.localStorage.getItem('name');
+        return name;
     }
-    function get() {
-        this.name = window.localStorage.getItem('name') || '';
-        this.pass = window.localStorage.getItem('pass') || '';
-        this.checked = window.localStorage.getItem('checked') || false;
+    function getPass(){
+        var pass = window.localStorage.getItem('pass');
+        return pass;
+    }
+    function getAutoLogin(){
+        var autoLogin = window.localStorage.getItem('autoLogin') || false;
+        return autoLogin;
+    }
+    function _setAutoLogin(autoLogin){
+        window.localStorage.setItem('autoLogin', autoLogin);
+    }
+    function _setName(name){
+        window.localStorage.setItem('name', name);
+    }
+    function _setPass(pass){
+        window.localStorage.setItem('pass', pass);
     }
 
 }

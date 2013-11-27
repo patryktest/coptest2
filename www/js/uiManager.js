@@ -4,12 +4,14 @@ function onConnectionOpen(){
     write('connected to ws');
     $('#loginButton').button('enable');
     $('#loginButton').button( "refresh" );
-    var element = $("#chat_contact_list iframe", parent.document.body);
+    /*var element = $("#chat_contact_list iframe", parent.document.body);
     USER_SESSION = element.attr('data-session');
     USER_ID = parseInt(element.attr('data-id'));
     if(USER_ID!=null && USER_SESSION!=null){
         setTimeout(commandLogin,500);
-    }
+    }   */
+    if(ls.autoLogin=="true")
+        commandLoginMainPage(ls.name, ls.pass);
             
 }
 
@@ -33,16 +35,21 @@ function onUserLogin() {
     $("#contactListT").hide();    
 }
 
-function onLogout(){
-    user = {};
-    navigator.app.exitApp();
+function onLogout(){  
+    ls.setAutoLogin(false);
+    ls.setName('');
+    ls.setPass('');
+    location.reload();
+    //navigator.app.exitApp();
 }
 function onRelogin(){
+    ls.setAutoLogin(false);
     location.reload(); 
     /*user = {};
     $.mobile.changePage( "index.html#loginPage" );*/
 }
 function onOfflineStatus(){
+    ls.setAutoLogin(false);
     location.reload(); 
 }
 
@@ -73,6 +80,7 @@ function onOpenPrivateChatWindow(id){
     }
     
     setDateBar();
+    resizeSendBar();
     
 }
 

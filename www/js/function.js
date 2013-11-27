@@ -1,8 +1,9 @@
 $(function() {  
     if (user){
         window.location = '#loginPage';}  
-    connect();
+    
     initLocalStorage(); 
+    connect();
    /*
     * after scroll update DateInfoBar in chatPage
     */
@@ -69,6 +70,7 @@ function init_events() {
     document.addEventListener("backbutton", function(e){
         if($.mobile.activePage.is('#mainPage') || $.mobile.activePage.is('#loginPage')){
             e.preventDefault();
+            ls.setAutoLogin(true);
             navigator.app.exitApp();
         }
         else {
