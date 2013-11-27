@@ -95,22 +95,22 @@
 }
 
 #popupMenu .li-CHAT_STATUS_ONLINE{
-    color: #00CC99;
+    color: #29AB49;
 }
 #popupMenu .li-CHAT_STATUS_AWAY{
-    color: #00CCCC;
+    color: #F6AB28;
 }
 #popupMenu .li-CHAT_STATUS_EMERGENCY{
-    color: #FF6600;
+    color: #CF412C;
 }
 #popupMenu .li-CHAT_STATUS_OFFLINE{
-    color: #CCCCCC;
+    color: #B3B3B2;
 }
 #popupMenu .li-CHAT_STATUS_INVISIBLE {
-    color: #FFFF99;
+    color: #D4D3D3;
 }
 .ui-CHAT_STATUS_ONLINE{
-    background: none repeat scroll 0 0 #00CC99;
+    background: none repeat scroll 0 0 #29AB49;
     color: #00CC99;
 }
 .ui-CHAT_STATUS_AVAILABLE{
@@ -118,20 +118,20 @@
     color: #00CC99;
 }
 .ui-CHAT_STATUS_AWAY{
-    background: none repeat scroll 0 0 #00CCCC;
-    color: #00CCCC;
+    background: none repeat scroll 0 0 #F6AB28;
+    color: #F6AB28;
 }
 .ui-CHAT_STATUS_EMERGENCY{
-    background: none repeat scroll 0 0 #FF6600;
-    color: #FF6600;
+    background: none repeat scroll 0 0 #CF412C;
+    color: #CF412C;
 }
 .ui-CHAT_STATUS_OFFLINE{
-    background: none repeat scroll 0 0 #CCCCCC;
-    color: #CCCCCC;
+    background: none repeat scroll 0 0 #B3B3B2;
+    color: #B3B3B2;
 }
 .ui-CHAT_STATUS_INVISIBLE {
-    background: none repeat scroll 0 0 #FFFF99;
-    color: #FFFF99;
+    background: none repeat scroll 0 0 #D4D3D3;
+    color: #D4D3D3;
 }
 
 .ui-icon-CHAT_STATUS_AVAILABLE{

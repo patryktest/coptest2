@@ -52,14 +52,19 @@
     width: 18px;
 }
 .icon-submenu{
-    background-position: -166px -104px;
+    background-position: -174px -110px;
     display: block;
     height: 16px;
     margin-top: 4px;
     transform: rotate(90deg);
     -ms-transform:rotate(90deg); /* IE 9 */
     -webkit-transform:rotate(90deg); /* Safari and Chrome */
-    width: 10px;
+    width: 12px;
+}
+
+.icon-search {
+    background-position: -85px -91px;
+    height: 18px;
 }
 .user-delet-icon {
     background: url("../img/icons.svg") repeat scroll -83px 0px transparent;
@@ -102,7 +107,7 @@
     background-position: 0 0;
 }
 .icon-submenu:hover {
-    background-position: -173px -185px;
+    background-position: -174px -184px;
 }
 .popup-screen-bg {
     background: none repeat scroll 0 0 #16699B;
@@ -172,35 +177,35 @@
     height: 15px;
 }
 .icon-online{
-    background: #00CC99;
+    background: #29AB49;
 }
 .icon-away{
-	background: #00CCCC;
+	background: #F6AB28;
 }
 .icon-emergency{
-	background: #FF6600;
+	background: #CF412C;
 }
 .icon-invisible{
-	background: #FFFF99;
+	background: #D4D3D3;
 }
 .icon-offline{
-	background: #CCCCCC;
+	background: #B3B3B2;
 }
 
 .menu-text-color-CHAT_STATUS_ONLINE{
-    color: #00CC99;
+    color: #29AB49;
 }
 .menu-text-color-CHAT_STATUS_AWAY{
-    color: #00CCCC;
+    color: #F6AB28;
 }
 .menu-text-color-CHAT_STATUS_EMERGENCY{
-    color: #FF6600;
+    color: #CF412C;
 }
 .menu-text-color-CHAT_STATUS_OFFLINE{
-    color: #CCCCCC;
+    color: #B3B3B2;
 }
 .menu-text-color-CHAT_STATUS_INVISIBLE {
-    color: #FFFF99;
+    color: #D4D3D3;
 }
 .menu-text-color-light_blue{
 	color: #B2CCDD;
@@ -367,4 +372,54 @@ li.menu-status:hover > span.menu-status-icon {
 }
 .findText-hover{
     background: greenyellow;
+}
+.input-search-in-chat {
+    border: none;
+}
+#searchBarT {
+    font-size: 16px;
+    margin: 0.6em 60px 0.8em;
+}
+.search-bar-result {
+    color: #000000;
+    font-weight: normal;
+}
+.icon-x {
+    background-position: -120px -76px;
+    display: block;
+    height: 14px;
+    width: 13px;
+}
+#header-xBtn {
+    display: inline-block;
+    position: absolute;
+    right: 21px;
+    top: 66px;
+}
+#header-nextBtn {
+    float: right;
+}
+#header-prevBtn {
+    float: left;
+}
+.header-search-bar {
+    display: inline-block;
+    width: 100%;
+}
+.icon-img-prev-before:before {
+    background: url("../img/mobile_icons.svg") no-repeat scroll -174px -111px / 230px auto rgba(0, 0, 0, 0);
+    content: "";
+    float: left;
+    height: 14px;
+    margin: 4px 10px;
+    transform: rotate(180deg);
+    width: 11px;
+}
+.icon-img-next-after:after {
+    background: url("../img/mobile_icons.svg") no-repeat scroll -174px -111px / 230px auto rgba(0, 0, 0, 0);
+    content: "";
+    float: right;
+    height: 14px;
+    margin: 4px 10px;
+    width: 11px;
 }

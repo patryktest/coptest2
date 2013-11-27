@@ -26,15 +26,15 @@
         <!-----------------------------------------------------------------------------------------------------------------------------login page------->
         <div data-role="page" id="loginPage" data-theme="d">
             <div data-role="content">
-               <p class="login_logo"></p>
+                <p class="login_logo"></p>
                 <p>
-                <!--<ul>
-                    <li><input type="text" id="loginI" value=""</li>
-                    <li><input type="password" id="passwordI" value=""</li>
-                    <li><button onclick="commandLoginMainPage($('#loginI').val(), $('#passwordI').val());" id="loginButton">Login</button></li>
-                    <li><span id="connectionON">Network status...</span></li>
-                </ul>-->
-                    
+                    <!--<ul>
+                        <li><input type="text" id="loginI" value=""</li>
+                        <li><input type="password" id="passwordI" value=""</li>
+                        <li><button onclick="commandLoginMainPage($('#loginI').val(), $('#passwordI').val());" id="loginButton">Login</button></li>
+                        <li><span id="connectionON">Network status...</span></li>
+                    </ul>-->
+
                     <input data-corners="false" type="text" id="loginI" value="" placeholder="Email address"/>
                     <input data-corners="false" type="password" id="passwordI" value="" placeholder="Password"/>
                     <a class="login-link" href="https://dev.uniquedoc.com/">Forget your password or PIN?</a>
@@ -42,7 +42,7 @@
                     <span class="login-text">New to Uniquedoc?</span>
                     <a class="login-link login-link-bigger" href="https://dev.uniquedoc.com/">Register at uniquedoc.com</a>
                     <span id="connectionON">Network status...</span>                    
-                    
+
                 </p>
 
             </div>
@@ -61,7 +61,7 @@
                 <h1 id="mainPageHeadT">Recent Conversations</h1>  
                 <div class="header-status menu-enable">
                     <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
-                 </div>
+                </div>
                 <div class="header-backBtn menu-enable hidden">
                     <a id="chatBack" class="icon-img icon-back" onclick="onHideMoreContacts();"></a>
                 </div>
@@ -78,9 +78,9 @@
             </div>
 
             <div data-role="footer" data-position="fixed" data-theme="d" data-tap-toggle="false">
-               <ul data-role="listview" id="showContactsBtn">
-                   <li class="ui-li ui-li-static ui-btn-up-c" data-icon="false" onclick="onShowMoreContacts();"><a>Show Contacts</a></li>
-               </ul>
+                <ul data-role="listview" id="showContactsBtn">
+                    <li class="ui-li ui-li-static ui-btn-up-c" data-icon="false" onclick="onShowMoreContacts();"><a>Show Contacts</a></li>
+                </ul>
             </div>
         </div>
         <!-----------------------------------------------------------------------------------------------------------------------------contact page------->
@@ -97,7 +97,7 @@
                 <h1 id="manageGroupContactT">Connections</h1>  
                 <div class="header-status menu-enable">
                     <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
-                 </div>
+                </div>
                 <div class="header-backBtn menu-enable">
                     <a id="contactback" class="icon-img icon-back" onclick="onCancelManageGroupMembers();"></a>
                 </div>
@@ -109,8 +109,8 @@
                 </ul>
                 <ul data-role="none" id="contactPageSmallMenu">
                     <li data-role="none" class="manageGroupMembers">                        
-                            <a data-role="none" class="ok_button button" onclick="onOkManageGroupMembers();">Add new members</a>
-                            <!--<a onclick="onCancelManageGroupMembers();" href=""><span class="manageGroupMembers_cancel"></span></a>-->
+                        <a data-role="none" class="ok_button button" onclick="onOkManageGroupMembers();">Add new members</a>
+                        <!--<a onclick="onCancelManageGroupMembers();" href=""><span class="manageGroupMembers_cancel"></span></a>-->
                     </li>
                 </ul>
 
@@ -130,15 +130,23 @@
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
-                <h1 id="chatPageTitle">Text chat</h1>  
-                <div class="header-status menu-enable">
-                    <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
-                 </div>
-                <div class="header-backBtn menu-enable">
-                    <a id="chatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                <div class="header-main-part">
+                    <h1 id="chatPageTitle" class="ui-title">Text chat</h1>  
+                    <div class="header-status menu-enable">
+                        <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
+                    </div>
+                    <div class="header-backBtn menu-enable">
+                        <a id="chatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                    </div>
+                    <div class="header-subMenu menu-enable">
+                        <a id="subMenu" class="icon-img icon-submenu" onclick="onSubmenuOpen(friend_sub_menu);"></a>
+                    </div>
                 </div>
-                <div class="header-subMenu menu-enable">
-                    <a id="subMenu" class="icon-img icon-submenu" onclick="onSubmenuOpen(friend_sub_menu);"></a>
+                <div class="header-search-bar" style="display: none;">
+                    <h1 id="searchBarT" class="ui-title"><span></span> result for: <span class="search-bar-result">photogra</span></h1>
+                    <div id="header-xBtn"><a class="icon-img icon-x menu-enable" onclick="searchClose()"></a></div>
+                    <div id="header-prevBtn"><a class="icon-img-prev-before menu-enable" onclick="searchPrev()">prev</a></div>
+                    <div id="header-nextBtn"><a class="icon-img-next-after menu-enable" onclick="searchNext()">next</a></div>
                 </div>
                 <div class="ui-li-dateinfo">Friday, 28th October 2013</div>
             </div>
@@ -172,7 +180,7 @@
                 <h1 id="groupChatPageT"></h1>  
                 <div class="header-status menu-enable">
                     <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
-                 </div>
+                </div>
                 <div class="header-backBtn menu-enable">
                     <a id="groupChatBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
                 </div>
@@ -215,7 +223,7 @@
                 <h1 id="groupMenuPageT"></h1> 
                 <div class="header-status menu-enable">
                     <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
-                 </div>
+                </div>
                 <div class="header-backBtn menu-enable">
                     <a id="groupMenuBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
                 </div>

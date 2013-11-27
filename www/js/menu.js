@@ -25,7 +25,7 @@ function showMenu(_menu){
         if(menuType=="input")
             htmltext = '<li class="menu-enable '+liClass+'">\n\
                     <span class="icon-img icon-'+menu[i].icon+' icon-menu popup-icon-'+menu[i].float+' '+spanClass+'"></span>\n\
-                    <span class="menu-text-'+menu[i].float+' menu-text-color-'+color+'"><input onkeydown="if(event.keyCode ==13){hideMenu();'+menu[i].onclick+';}" type="text" id="" value="" placeholder="'+menu[i].text+'"/></span>\n\
+                    <span class="menu-text-'+menu[i].float+' menu-text-color-'+color+'"><input onkeydown="if(event.keyCode ==13){hideMenu();'+menu[i].onclick+';}" type="text" id="" class="input-search-in-chat" value="" placeholder="'+menu[i].text+'"/></span>\n\
                     </li>';
         menuElement.append(htmltext);
     }

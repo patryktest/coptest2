@@ -28,6 +28,8 @@ function setStatus(status) {
     updateStatusIcon(status,global_status);
     global_status =status;
     sendCommand('user.updateStatus', [user.id, status]);
+    if(status = user_status.offline)
+        onOfflineStatus();
 }
 
 function commandOpenPrivateChat(friendId) {

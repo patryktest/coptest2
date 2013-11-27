@@ -1,12 +1,42 @@
 function searchInPrivateChat(text){
-    s = new searchText(text);
+    if(typeof searchResult != 'undefined' && searchResult!=null)
+        searchResult.clearResult();
+    searchResult = new searchText(text);
+    showSearchToolBar(text);
+    
 }
-function searchActiv(){
-    if(s!=null)
-        return true;
-    else return false;
 
+function showSearchToolBar(text){
+    $('.header-main-part').hide();
+    $('.header-search-bar').show();
+    $("#searchBarT span").text(searchResult.result.length);
+    $("#searchBarT .search-bar-result").text(text);
+    
+    
 }
+function hideSearchToolBar(){
+    $('.header-main-part').show();
+    $('.header-search-bar').hide();
+    
+}
+function searchPrev(){
+    if(typeof searchResult != 'undefined'){
+        searchResult.prev();
+    }
+}
+function searchNext(){
+    if(typeof searchResult != 'undefined'){
+        searchResult.next();
+    }
+}
+function searchClose(){
+    hideSearchToolBar();
+    if(typeof searchResult != 'undefined' && searchResult!=null){
+        searchResult.clearResult();
+        searchResult = null;
+    }
+}
+
 function searchText(text) {
     
     this.next = _next;
@@ -52,7 +82,7 @@ function searchText(text) {
     }
     
     function _highlightActual(){
-        $("html, body").animate({scrollTop: $(this.result[this.actual]).offset().top - 110}, 100);
+        $("html, body").animate({scrollTop: $(this.result[this.actual]).offset().top - $("#chatPageTemplate .ui-header").height()}, 100);
         this.addhoverToActual();
     }
     
@@ -63,7 +93,7 @@ function searchText(text) {
     }
     
     function _clearResult(){
-        s.result.replaceWith( s.result.html())
+        this.result.replaceWith( this.result.html())
         this.result = [];
         this.actual =0;
     }

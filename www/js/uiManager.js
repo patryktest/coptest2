@@ -38,9 +38,12 @@ function onLogout(){
     navigator.app.exitApp();
 }
 function onRelogin(){
-	location.reload(); 
+    location.reload(); 
     /*user = {};
     $.mobile.changePage( "index.html#loginPage" );*/
+}
+function onOfflineStatus(){
+    location.reload(); 
 }
 
 function onGoToMainPage(){
