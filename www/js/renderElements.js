@@ -226,7 +226,7 @@ function itemTemplate(id_string, id, fun, name, countNewMessage, status, message
 
 function messageTemplate(userIsSender, message, status, date, num,avatar) {
     var color = 'light';
-    if (num % 2)
+   if(userIsSender)//if (num % 2)
         color = 'dark';
     else
         color = 'light';
@@ -239,8 +239,8 @@ function messageTemplate(userIsSender, message, status, date, num,avatar) {
     element.setAttribute('class', 'ui-li ui-li-static ui-btn-up-d ' + color); //('ui-li ui-li-static ui-btn-up-d '+color);
     //var temp = '<li class="ui-li ui-li-static ui-btn-up-d '+color+'">';
     if (userIsSender) {
-        temp = '<p class="ui-li-right ui-li-desc"><img  src="'+image+'" alt="status" class="ui-li-profil-icon"></p>';
-        temp += '<p class="ui-li-message-left ui-li-desc">' + message + '</p>';
+        //temp = '<p class="ui-li-right ui-li-desc"><img  src="'+image+'" alt="status" class="ui-li-profil-icon"></p>';
+        temp = '<p class="ui-li-message-left ui-li-desc">' + message + '</p>';
     }
     else {
         temp = '<p class="ui-li-left ui-li-desc"><img  src="'+image+'" alt="status" class="ui-li-profil-icon"></p>';

@@ -10,9 +10,9 @@ function onConnectionOpen(){
     if(USER_ID!=null && USER_SESSION!=null){
         setTimeout(commandLogin,500);
     }   */
-    if(ls.autoLogin=="true")
+    /*if(ls.autoLogin=="true")
         commandLoginMainPage(ls.name, ls.pass);
-            
+      */      
 }
 
 function onConnectionError(error){

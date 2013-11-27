@@ -146,7 +146,7 @@ function updateFriendElementF(status,device){
         var i = 0;
         var userIsSender = false;
         var avatar = null;
-        numberMessageItemGroup = 0;
+        var numberMessageItemGroup = 0;
 
         /*if (historyLength > 40)
             i = historyLength - 40;
