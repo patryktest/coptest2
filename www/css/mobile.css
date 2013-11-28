@@ -407,19 +407,32 @@ li.menu-status:hover > span.menu-status-icon {
     width: 100%;
 }
 .icon-img-prev-before:before {
-    background: url("../img/mobile_icons.svg") no-repeat scroll -174px -111px / 230px auto rgba(0, 0, 0, 0);
+    background: url("../img/mobile_icons.svg") no-repeat scroll;
     content: "";
     float: left;
     height: 14px;
     margin: 4px 10px;
     transform: rotate(180deg);
+    -ms-transform:rotate(180deg); /* IE 9 */
+    -webkit-transform:rotate(180deg); /* Safari and Chrome */
     width: 11px;
+    background-position: -174px -111px;
+    background-size: 230px auto;
 }
 .icon-img-next-after:after {
-    background: url("../img/mobile_icons.svg") no-repeat scroll -174px -111px / 230px auto rgba(0, 0, 0, 0);
+    background: url("../img/mobile_icons.svg") no-repeat scroll;
     content: "";
     float: right;
     height: 14px;
     margin: 4px 10px;
     width: 11px;
+    background-position: -174px -111px;
+    background-size: 230px auto;
+}
+
+#chatHistory li .ui-li-desc, #groupChatHistory li .ui-li-desc {
+    font-size: 12px;
+}
+.ui-icon-searchfield {
+    border: none;
 }
