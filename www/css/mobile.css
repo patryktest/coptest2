@@ -439,3 +439,18 @@ li.menu-status:hover > span.menu-status-icon {
 .ui-icon-searchfield:after{
     border: none;
 }
+.messageSendBox {
+    margin: 5px 10px;
+}
+
+/******************************************************
+*   chat page footer
+*******************************************************/
+
+.block-input-send .ui-input-text {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: thin solid;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+}

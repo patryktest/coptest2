@@ -68,3 +68,17 @@
 #chatBack:hover, #contactback:hover, #groupChatBack:hover, #groupMenuBack:hover {
     background-position: -95px -47px;
 }
+.messageSendBox {
+    border: thin solid #D7E9F1;
+    margin: 5px 10px;
+}
+/******************************************************
+*   chat page footer
+*******************************************************/
+
+.block-input-send .ui-input-text {
+    background: none;
+    box-shadow: none;
+    border: none;
+    margin: 0;
+}

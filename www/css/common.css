@@ -59,11 +59,9 @@
 #chatPageTemplate .messageSendBox input,#groupChatPageTemplate .messageSendBox input {
     border: medium none;
     color: #1A1C3B;
+    box-shadow: none;
 }
-.messageSendBox {
-    border: thin solid #D7E9F1;
-    margin: 5px 10px;
-}
+
 
 
 

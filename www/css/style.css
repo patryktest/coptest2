@@ -392,12 +392,6 @@
 *   chat page footer
 *******************************************************/
 
-.block-input-send .ui-input-text {
-    background: none;
-    box-shadow: none;
-    border: none;
-    margin: 0;
-}
 
 .block-button-send .ui-btn {
     background: url("../img/send_button.png") no-repeat;
