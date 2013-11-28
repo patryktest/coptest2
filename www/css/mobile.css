@@ -436,3 +436,6 @@ li.menu-status:hover > span.menu-status-icon {
 .ui-icon-searchfield {
     border: none;
 }
+.ui-icon-searchfield:after{
+    border: none;
+}
