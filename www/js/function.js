@@ -78,8 +78,8 @@ function init_events() {
         }
     }, false);
     
-    $(document).on('pageshow','#chatPageTemplate',function(){resizeSendBar();});
-    $(document).on('pageshow','#groupChatPageTemplate',function(){resizeSendBar();});
+    $(document).on('pageshow','#chatPageTemplate',function(){resizeSendBar('#chatPageTemplate');});
+    $(document).on('pageshow','#groupChatPageTemplate',function(){resizeSendBar('#groupChatPageTemplate');});
     
 }
 
@@ -107,13 +107,12 @@ function writeInfo(msg){
     if(DEBUG_MODE)
         console.info(msg);
 }
-function initPosition(){
-    //$('.header-menu li').width(($(window).width()-4)/4+"%");
+function initPosition(){    
     $('.header-menu li').width("24%");    
 }
-function resizeSendBar(){
-    console.log($('.messageSendBox').width(),$('.block-button-send').width());
-    $(".block-input-send").width($('.messageSendBox').width()-$('.block-button-send').width()-20);
+function resizeSendBar(page){
+    console.log($(page+' .messageSendBox').width(),$(page+' .block-button-send').width());
+    $(page+" .block-input-send").width($(page+' .messageSendBox').width()-$(page+' .block-button-send').width()-20);
 }
 
 
