@@ -82,3 +82,8 @@
     border: none;
     margin: 0;
 }
+.block-input-send{
+    display: inline-block;
+    margin-left: 8px;
+
+}

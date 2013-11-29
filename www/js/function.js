@@ -77,6 +77,10 @@ function init_events() {
             //navigator.app.backHistory()
         }
     }, false);
+    
+    $(document).on('pageshow','#chatPageTemplate',function(){resizeSendBar();});
+    $(document).on('pageshow','#groupChatPageTemplate',function(){resizeSendBar();});
+    
 }
 
 /*function hideLetterDividers(){
@@ -109,7 +113,7 @@ function initPosition(){
 }
 function resizeSendBar(){
     console.log($('.messageSendBox').width(),$('.block-button-send').width());
-    //$(".block-input-send").width($('.messageSendBox').width()-$('.block-button-send').width()-20);
+    $(".block-input-send").width($('.messageSendBox').width()-$('.block-button-send').width()-20);
 }
 
 

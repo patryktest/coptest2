@@ -63,7 +63,7 @@ function onOpenPrivateChatWindow(id){
     $.mobile.changePage( "index.html#chatPageTemplate");  
     
     var friend = user.getFriendById(id);
-    
+    $('#chatPageTitle').html(friend.name);
     $('#chatHistoryElementPlace').html(friend.historyElement);
     if(friend){
         friend.recent = true;
@@ -80,8 +80,7 @@ function onOpenPrivateChatWindow(id){
     }
     
     setDateBar();
-    resizeSendBar();
-    
+        
 }
 
 function onClosePrivateChatWindow(){

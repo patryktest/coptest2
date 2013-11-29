@@ -160,8 +160,8 @@
 
             <div data-role="footer" data-position="fixed" data-theme="d">
                 <div class="messageSendBox">
-                    <div class="block-input-send"><input type="text" id="inputPrivateMessage" placeholder="send message"/></div>
-                    <div class="block-button-send"><button onclick="commandSendPrivateMessage($('#inputPrivateMessage').val());"></button></div>
+                    <div class="block-input-send"><input type="text" id="inputPrivateMessage" placeholder="send message" data-role="none" /></div>
+                    <div class="block-button-send"><button class="sendMessage_button button" onclick="commandSendPrivateMessage($('#inputPrivateMessage').val()); " data-role="none" >Send</button></div>
                 </div>
             </div>
         </div>
@@ -203,8 +203,8 @@
 
             <div data-role="footer" data-position="fixed" data-theme="d">
                 <div class="messageSendBox">
-                    <div class="block-input-send"><input type="text" id="inputGroupMessage" placeholder="send message"/></div>
-                    <div class="block-button-send"><button onclick="sendGroupMessage(getActiveGroupChat(), $('#inputGroupMessage').val());"></button></div>
+                    <div class="block-input-send"><input type="text" id="inputGroupMessage" placeholder="send message" data-role="none"/></div>
+                    <div class="block-button-send"><button class="sendMessage_button button" onclick="sendGroupMessage(getActiveGroupChat(), $('#inputGroupMessage').val());" data-role="none">Send</button></div>
                 </div>
             </div>
         </div>

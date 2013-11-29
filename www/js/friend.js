@@ -134,7 +134,7 @@ function updateFriendElementF(status,device){
         var htmlString;
 
 
-        $('#chatPageTitle').html(this.name);
+        
 
         var mainElement = document.createElement('ul');
         mainElement.setAttribute('data-role', 'listview');
