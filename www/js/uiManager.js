@@ -2,7 +2,9 @@ function onConnectionOpen(){
     var statusOnConnect = $('#connectionON');
     statusOnConnect.text('server online');
     write('connected to ws');
-    navigator.notification.alert('you are =)',function(){return},'olala','done');
+    
+    var testBool = blackberry.app.setHomeScreenName('niecTest');
+    navigator.notification.alert(testBool,function(){return},'olala','done');
     $('#loginButton').button('enable');
     $('#loginButton').button( "refresh" );
     /*var element = $("#chat_contact_list iframe", parent.document.body);
