@@ -133,13 +133,11 @@ function updateFriendElementF(status,device){
         var lastSendTime = '';
         var htmlString;
 
-
-        
-
         var mainElement = document.createElement('ul');
         mainElement.setAttribute('data-role', 'listview');
         mainElement.setAttribute('id', 'chatHistory');
         this.historyElement = mainElement;
+        
         var element_chatHistory = this.historyElement;
 
         var historyLength = this.history.length;
@@ -169,37 +167,39 @@ function updateFriendElementF(status,device){
             statusElement = this.history[i].statusElement;
 
             var newDate = new Date(this.history[i].timeId);
-            time = newDate.getUTCFullYear() + ':' + newDate.getUTCDate() + ':' + newDate.getUTCMonth() + ':' + newDate.getUTCHours() + ':' + newDate.getUTCMinutes();
-            date = newDate.toString('dddd,d');//getUTCDate() + '.' + newDate.getUTCMonth() + '.' + newDate.getUTCFullYear();
+            time = newDate;
+            
+            date = newDate.toString('dddd,d');
             date+=newDate.getOrdinal();
             date+=newDate.toString(' MMMM yyyy');
-            if (lastDate === date) {
-                date = "";
-            }
-            else {
-                lastDate = date;
-            }
 
-            if(date!==""){
+            /*
+             * add dateElement before text message
+             */
+            if(lastDate !== date){
                 var element = document.createElement('li');
                 element.setAttribute('class', 'ui-li ui-li-static ui-btn-up-d ui-li-chat-date');
                 element.innerHTML = date;
-                element_chatHistory.appendChild(element);
-                //dateTagList.push(element);
-                //console.log("add to dataTagList");
-                
-                //console.log('elements',dateTagList);
-                
+                element_chatHistory.appendChild(element);                
             }
-            if (lastSender !== name || date!=="") {
+            
+            /*
+             * add new message element
+             */
+            if (lastSender !== name || lastDate !== date) {
                 if(date=="")numberMessageItemGroup++;
                 var element = messageTemplate(userIsSender, mess, statusElement, (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes(), numberMessageItemGroup,avatar);
                 element_chatHistory.appendChild(element);
 
             }
+            /*
+             * add message to prev message element
+             * @type @exp;document@call;createElement|@exp;element_chatHistory@pro;lastChild
+             */
             else {
                 var element = element_chatHistory.lastChild;
                 var elementP = document.createElement('p');
+                
                 if (userIsSender) {
                     //htmlString = '<p class="ui-li-message-left ui-li-desc">' + mess + '</p>';
                     elementP.setAttribute('class', 'ui-li-message-left ui-li-desc');
@@ -214,15 +214,16 @@ function updateFriendElementF(status,device){
                     var lastElement = element.getElementsByClassName('ui-li-message-time');
                     element.removeChild(lastElement[lastElement.length - 1]);
                 }
-                //htmlString += '<p class="ui-li-message-time ui-li-desc">' + (newDate.getHours()<10?'0':'')+newDate.getHours()+':'+(newDate.getMinutes()<10?'0':'')+newDate.getMinutes() + ' '+date +' '+status+'</p>';
+                
                 var elementTime = document.createElement('p');
                 elementTime.setAttribute('class', 'ui-li-message-time ui-li-desc');
-                elementTime.innerHTML = (newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes();
+                elementTime.innerHTML = newDate.toString();//(newDate.getHours() < 10 ? '0' : '') + newDate.getHours() + ':' + (newDate.getMinutes() < 10 ? '0' : '') + newDate.getMinutes();
                 elementTime.appendChild(statusElement);
                 element.appendChild(elementTime);
             }
             lastSender = name;
             lastSendTime = time;
+            lastDate = date;
         }
 
         /*if (element_chatHistory.hasClass('ui-listview')) {
