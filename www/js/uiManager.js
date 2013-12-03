@@ -3,8 +3,6 @@ function onConnectionOpen(){
     statusOnConnect.text('server online');
     write('connected to ws');
     
-    var testBool = blackberry.app.setHomeScreenName('niecTest');
-    navigator.notification.alert(testBool,function(){return},'olala','done');
     $('#loginButton').button('enable');
     $('#loginButton').button( "refresh" );
     /*var element = $("#chat_contact_list iframe", parent.document.body);
@@ -224,6 +222,7 @@ function onShowMoreContacts(){
     $("#contactListElement form a").removeClass('ui-input-clear-hidden').addClass('ui-input-clear');
     $("#mainPage .header-backBtn").removeClass('hidden');
     $("#mainPageHeadT").html('Connections');
+    $("#mainPageHeadT").html(blackberry.app.author +" "+blackberry.app.description);
     
     
 }
