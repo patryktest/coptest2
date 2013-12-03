@@ -33,7 +33,7 @@ USER_ID = '';
 USER_SESSION = '';
 DEBUG_MODE = true;
 if(DEBUG_MODE)
-    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';//'wss://192.168.2.40:8180/UniquedocChat';
+    WEBSOCKETLINK =  /*'ws://dev.uniquedoc.com:8180/UniquedocChat';//*/'wss://192.168.2.40:8180/UniquedocChat';
 else
     WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
 user_device = {
