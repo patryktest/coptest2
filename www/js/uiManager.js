@@ -222,7 +222,8 @@ function onShowMoreContacts(){
     $("#contactListElement form a").removeClass('ui-input-clear-hidden').addClass('ui-input-clear');
     $("#mainPage .header-backBtn").removeClass('hidden');
     $("#mainPageHeadT").html('Connections2');
-    $("#mainPageHeadT").html(blackberry.app.author +" "+blackberry.app.description);
+    $("#mainPageHeadT").html('v2'+blackberry.app.author);
+    blackberry.app.showBannerIndicator("../img/icon_bar.png",1);
     
     
 }
