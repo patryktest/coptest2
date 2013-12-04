@@ -107,6 +107,10 @@ function responsePrivateHistory(json) {
 }
 
 function responsePrivateMessageNew(json) {
+    if(userDevice.state = device_state.pause){
+        userDevice.addNotification();
+    }
+    
     write('responsePrivateMessageNew: OK');    
     var friend = user.getFriendById(json.data.senderId);
     friend.addToHistory(json.data);  

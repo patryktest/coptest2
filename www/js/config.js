@@ -20,7 +20,8 @@ var jsFiles = [
     "js/date.js",
     "js/config_menu.js",
     "js/menu.js",
-    "js/search.js"
+    "js/search.js",
+    "js/secureStorage.js"
 ];
 var scriptTags = new Array(jsFiles.length);
 for (var i = 0, len = jsFiles.length; i < len; i++) {
@@ -32,10 +33,13 @@ document.write(scriptTags.join(""));
 USER_ID = '';
 USER_SESSION = '';
 DEBUG_MODE = true;
+
 if(DEBUG_MODE)
-    WEBSOCKETLINK =  /*'ws://dev.uniquedoc.com:8180/UniquedocChat';//*/'wss://192.168.2.40:8180/UniquedocChat';
+    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';//'wss://192.168.2.40:8180/UniquedocChat';
 else
     WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
+
+LOCALSTORAGEURL = 'https://dev.uniquedoc.com/api';
 user_device = {
     blackberry: 'blackberry',
     mobile: 'mobile',
@@ -57,7 +61,12 @@ user_status = {
     invisible : 'CHAT_STATUS_INVISIBLE',
     offline : 'CHAT_STATUS_OFFLINE'
     
-}
+};
+
+device_state ={
+    pause: 'pause',
+    run: 'run'
+};
 var online = 'CHAT_STATUS_ONLINE';
 var available = 'CHAT_STATUS_AVAILABLE';
 var away = 'CHAT_STATUS_AWAY';
@@ -73,5 +82,12 @@ var connection;
 var user = {};
 var friendList = {};
 var groupList = {};
+var userDevice={
+    type:'',
+    state:'',
+    addNotification: function(){},
+    removeNotification : function(){}
+    };
+
 mannage_group_conntact = false;
 mannage_group_name = false;

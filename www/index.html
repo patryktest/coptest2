@@ -54,7 +54,7 @@
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
                         <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
-                        <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
@@ -90,7 +90,7 @@
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
                         <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
-                        <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
@@ -126,7 +126,7 @@
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
                         <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
-                        <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
@@ -173,7 +173,7 @@
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
                         <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
-                        <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
@@ -216,7 +216,7 @@
                     <ul>
                         <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
                         <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
-                        <li class="menu-c menu-disable" onclick=""><span class="icon-img icon-box"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
                         <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
                     </ul>
                 </div>
@@ -248,6 +248,34 @@
                 <a id="groupChatMenuBtn_rename" onclick="onGroupPopupMenu('rename');"  href=""  data-inline="true" data-transition="slide" data-corners="false">Rename group</a>
                 <a id="groupChatMenuBtn_leave" onclick="onGroupPopupMenu('leave');"  href=""  data-inline="true" data-transition="slide" data-corners="false">Leave group</a>
                 <a id="groupChatMenuBtn_close" onclick="onGroupPopupMenu('close');"  href=""  data-inline="true" data-transition="slide" data-corners="false">Close group</a>
+            </div>
+        </div>
+        
+        <!-----------------------------------------------------------------------------------------------------------------------------secure storage menu------->
+        <div data-role="page" id="SecureStoragePageTemplate" data-theme="d">
+            <div data-role="header" data-position="fixed" data-theme="d">
+                <div class="header-menu">
+                    <ul>
+                        <li class="menu-a menu-enable" onclick="showMenu(main_menu)"><span class="icon-img icon-menu"></span></li>
+                        <li class="menu-b menu-disable" onclick=""><span class="icon-img icon-chat"></span></li>
+                        <li class="menu-c menu-enable" onclick="onSecureStorageOpen()"><span class="icon-img icon-box"></span></li>
+                        <li class="menu-d menu-disable" onclick=""><span class="icon-logo"></span></li>
+                    </ul>
+                </div>
+                <h1 id="groupMenuPageT"></h1> 
+                <div class="header-status menu-enable">
+                    <a id="statusLinkMainPage" onclick="showMenu(status_menu)"  data-icon="CHAT_STATUS_AVAILABLE" class="ui-CHAT_STATUS_AVAILABLE" ></a>
+                </div>
+                <div class="header-backBtn menu-enable">
+                    <a id="groupMenuBack" class="icon-img icon-back" onclick="onGoToMainPage();"></a>
+                </div>
+            </div>
+
+            <div data-role="content">             
+                
+            </div>
+
+            <div data-role="footer" data-position="fixed" data-theme="d">
             </div>
         </div>
         <!--------------------------------------------------------------------------------------------------------------------------------- page------->

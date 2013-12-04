@@ -18,7 +18,7 @@ function onConnectionOpen(){
 
 function onConnectionError(error){
     var statusOnConnect = $('#connectionON');
-    statusOnConnect.text('server ofline');
+    statusOnConnect.text('server offline');
     console.log(error);
    // alert(error);
    $('#loginButton').button('disable');
@@ -246,4 +246,9 @@ function onSubmenuOpen(submenu){
 function onDeletConversationConfirmPopup(){
     showPopup(deleteConversation_popup);
     $('#chatPageTemplate .ui-li-dateinfo').hide();
+}
+
+function onSecureStorageOpen(){
+    $.mobile.changePage( "index.html#SecureStoragePageTemplate" );
+    secureStorageRequest.connect();
 }

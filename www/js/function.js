@@ -5,41 +5,6 @@ $(function() {
 
     initLocalStorage();
     connect();
-    /*
-     * after scroll update DateInfoBar in chatPage
-     */
-
-
-    $(window).scroll(function() {
-        if (window.location.hash == "#chatPageTemplate") {
-            updateDateBar();
-        }
-    })
-
-    $('#inputPrivateMessage').keydown(function(e) {
-        if (e.keyCode === 13) {
-            var msg = $(this).val();
-            if (!msg) {
-                return;
-            }
-
-            commandSendPrivateMessage(msg);
-        }
-        ;
-    });
-
-    $('#inputGroupMessage').keydown(function(e) {
-        if (e.keyCode === 13) {
-            var msg = $(this).val();
-            if (!msg) {
-                return;
-            }
-
-            sendGroupMessage(getActiveGroupChat(), msg);
-        }
-        ;
-    });
-
     init_events();
     renderPopupMenu();
     initPosition();
@@ -53,6 +18,47 @@ function initLocalStorage() {
 
 }
 function init_events() {
+    /*
+     * after scroll update DateInfoBar in chatPage
+     */
+
+
+    $(window).scroll(function() {
+        if (window.location.hash == "#chatPageTemplate") {
+            updateDateBar();
+        }
+    })
+
+    /*
+     *  chat send input
+     */
+    $('#inputPrivateMessage').keydown(function(e) {
+        if (e.keyCode === 13) {
+            var msg = $(this).val();
+            if (!msg) {
+                return;
+            }
+
+            commandSendPrivateMessage(msg);
+        }
+        ;
+    });
+    
+    /*
+     *  group chat send input
+     */
+    $('#inputGroupMessage').keydown(function(e) {
+        if (e.keyCode === 13) {
+            var msg = $(this).val();
+            if (!msg) {
+                return;
+            }
+
+            sendGroupMessage(getActiveGroupChat(), msg);
+        }
+        ;
+    });
+    
     $("body").on("FilterInputCreated", function(event) {
 
         $('#contactListElement form a').click(function() {
@@ -85,6 +91,8 @@ function init_events() {
     $(document).on('pageshow', '#groupChatPageTemplate', function() {
         resizeSendBar('#groupChatPageTemplate');
     });
+    
+    deviceTypeInitEvent();
 
 }
 
