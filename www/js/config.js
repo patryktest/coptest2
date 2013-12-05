@@ -21,7 +21,8 @@ var jsFiles = [
     "js/config_menu.js",
     "js/menu.js",
     "js/search.js",
-    "js/secureStorage.js"
+    "js/secureStorage.js",
+    "js/deviceTypeInitEvent.js"
 ];
 var scriptTags = new Array(jsFiles.length);
 for (var i = 0, len = jsFiles.length; i < len; i++) {
@@ -35,7 +36,7 @@ USER_SESSION = '';
 DEBUG_MODE = true;
 
 if(DEBUG_MODE)
-    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';//'wss://192.168.2.40:8180/UniquedocChat';
+    WEBSOCKETLINK =  /*'wss://dev.uniquedoc.com:8180/UniquedocChat';//*/'wss://192.168.2.40:8180/UniquedocChat';
 else
     WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
 

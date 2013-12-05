@@ -10,6 +10,8 @@ $(function() {
     initPosition();
 });
 
+
+
 function initLocalStorage() {
     ls = new LocalStorage();
     //$('#saveLoginCheckBox input').attr("checked",ls.checked);
@@ -91,8 +93,7 @@ function init_events() {
     $(document).on('pageshow', '#groupChatPageTemplate', function() {
         resizeSendBar('#groupChatPageTemplate');
     });
-    
-    deviceTypeInitEvent();
+    document.addEventListener("deviceready", deviceTypeInitEvent, false);
 
 }
 
