@@ -107,7 +107,7 @@ function responsePrivateHistory(json) {
 }
 
 function responsePrivateMessageNew(json) {
-    if(userDevice.state = device_state.pause){
+    if(userDevice.state == device_state.pause){
         userDevice.addNotification();
     }
     
