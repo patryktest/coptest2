@@ -16,23 +16,23 @@ function deviceTypeInitEvent(){
 }
 
 function initBlackBerryEvent(){
-    userDevice.addNotification = blackBerryNotification();
-    userDevice.removeNotification = blackBerryRemoveNotidication();
+    userDevice.addNotification = blackBerryNotification;
+    userDevice.removeNotification = blackBerryRemoveNotidication;
     document.addEventListener("pause", onDevicePause, false);
     document.addEventListener("resume", onDeviceResume, false);
 }
 function initDefaultEvent(){
-    userDevice.addNotification = defaultNotification();
+    userDevice.addNotification = defaultNotification;
     document.addEventListener("pause", onDevicePause, false);
     document.addEventListener("resume", onDeviceResume, false);
 }
 
 function onDevicePause(){
-    userDevice.state = device_status.pause;
+    userDevice.state = device_state.pause;
 }
 
 function onDeviceResume(){
-    userDevice.state = device_status.run;
+    userDevice.state = device_staterun;
     userDevice.removeNotification();
 }
 
