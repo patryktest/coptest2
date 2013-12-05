@@ -32,7 +32,7 @@ function onDevicePause(){
 }
 
 function onDeviceResume(){
-    userDevice.state = device_staterun;
+    userDevice.state = device_state.run;
     userDevice.removeNotification();
 }
 
