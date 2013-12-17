@@ -279,19 +279,19 @@
     padding: 6px 0 0 35px;
 }
 
-.device-mobile, .device-blackberry {
+.device-mobile-and, .device-mobile-ios, .device-mobile-bbr {
     background-position: 0 0;
     background-size: 160px auto;
     height: 13px;
     width: 10px;
 }
-.device-tablet {
+.device-tablet-and, .device-tablet-ios, .device-tablet-bbr {
     background-position: -113px -13px;
     background-size: 160px auto;
     height: 13px;
     width: 13px;
 }
-.device-desktop {
+.device-desktop, .device-USER_DEVICE_NONE {
     background-position: -111px 0px;
     background-size: 160px auto;
     height: 13px;

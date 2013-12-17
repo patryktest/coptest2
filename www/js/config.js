@@ -33,20 +33,29 @@ document.write(scriptTags.join(""));
 
 USER_ID = '';
 USER_SESSION = '';
-DEBUG_MODE = true;
+DEBUG_MODE = false;
+LIVE_MODE = false;
 
 if(DEBUG_MODE)
-    WEBSOCKETLINK =  /*'wss://dev.uniquedoc.com:8180/UniquedocChat';//*/'wss://192.168.2.40:8180/UniquedocChat';
-else
-    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
+    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';//'wss://192.168.2.40:8180/UniquedocChat';
+else {
+    if(!LIVE_MODE)
+        WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
+    if(LIVE_MODE)
+        WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
+}
+
 
 LOCALSTORAGEURL = 'https://dev.uniquedoc.com/api';
-user_device = {
-    blackberry: 'blackberry',
-    mobile: 'mobile',
-    tablet: 'tablet',
-    desktop: 'desktop',
-    none: 'USER_DEVICE_NONE'
+user_device_type = {
+    NONE: 'USER_DEVICE_NONE',
+    DESKTOP: "desktop",
+    MOBILE_ANDROID: "mobile-and",
+    MOBILE_IOS: "mobile-ios",
+    MOBILE_BLACKBERRY: "mobile-bbr",
+    TABLET_ANDROID: "tablet-and",
+    TABLET_IOS: "tablet-ios",
+    TABLET_BLACKBERRY: "tablet-bbr"
 };
 
 var private_message_status = {

@@ -1,6 +1,6 @@
 function commandLoginMainPage(login, pass) {
     var status = user_status.online; 
-    var device = user_device.blackberry;
+    var device = user_device_type.MOBILE_BLACKBERRY;
         ls.setName(login);
         ls.setPass(pass);
         ls.setAutoLogin(true);
@@ -16,7 +16,7 @@ function commandLoginMainPage(login, pass) {
 }
 
 function commandLogin(){
-    sendCommand('user.login', [USER_ID, USER_SESSION, user_status.online, user_device.desktop]);
+    sendCommand('user.login', [USER_ID, USER_SESSION, user_status.online, user_device_type.DESKTOP]);
 }
 function logout() {
     sendCommand('user.logout', [user.id]);

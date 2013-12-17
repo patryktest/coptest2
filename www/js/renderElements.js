@@ -172,7 +172,7 @@ function renderPopupGroupMenu(content, left_btn, right_btn, add_function) {
 function itemTemplate(id_string, id, fun, name, countNewMessage, status, message,message_status,avatarBase64,_device) {
     var device = "";
     if(_device == null)
-        device = user_device.desktop;
+        device = user_device_type.DESKTOP;
     else 
         device = _device;
     

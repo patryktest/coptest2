@@ -106,13 +106,13 @@ function responsePrivateHistory(json) {
     onOpenPrivateChatWindow(getActiveConverastion());
 }
 
-function responsePrivateMessageNew(json) {
-    if(userDevice.state == device_state.pause){
-        userDevice.addNotification();
-    }
-    
+function responsePrivateMessageNew(json) {  
     write('responsePrivateMessageNew: OK');    
     var friend = user.getFriendById(json.data.senderId);
+    
+    if(userDevice.state == device_state.pause){
+        userDevice.addNotification(friend.name,json.data.message);
+    }
     friend.addToHistory(json.data);  
     friend.recent = true;
     user.updateRecentConversationElement(friend);

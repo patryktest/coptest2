@@ -45,6 +45,7 @@ function blackBerryRemoveNotidication(){
     blackberry.app.removeBannerIndicator();
 }
 
-function defaultNotification(){
+function defaultNotification(_name,_message){
     navigator.notification.beep(1);
+    window.plugin.notification.local.add({title:_name, message: _message });
 }
