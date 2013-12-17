@@ -5,6 +5,7 @@ function connect() {
     // if user is running mozilla then use it's built-in WebSocket
     window.WebSocket = window.WebSocket || window.MozWebSocket;
     try{
+        console.log('send connection')
         connection = new WebSocket(WEBSOCKETLINK);
     }
     catch (e){

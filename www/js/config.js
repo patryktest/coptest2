@@ -33,7 +33,7 @@ document.write(scriptTags.join(""));
 
 USER_ID = '';
 USER_SESSION = '';
-DEBUG_MODE = false;
+DEBUG_MODE = true;
 LIVE_MODE = false;
 
 if(DEBUG_MODE)
