@@ -1,4 +1,4 @@
-function LocalStorage() {
+function LocalStorageObject() {
     this.name = getName();
     this.pass = getPass();
     this.autoLogin = getAutoLogin();

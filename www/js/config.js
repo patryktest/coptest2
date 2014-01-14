@@ -35,15 +35,30 @@ USER_ID = '';
 USER_SESSION = '';
 DEBUG_MODE = true;
 LIVE_MODE = false;
+WSS_MODE = false;
 
-if(DEBUG_MODE)
-    WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';//'wss://192.168.2.40:8180/UniquedocChat';
-else {
-    if(!LIVE_MODE)
-        WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
-    if(LIVE_MODE)
-        WEBSOCKETLINK =  'wss://dev.uniquedoc.com:8180/UniquedocChat';
+if (WSS_MODE) {
+    if (DEBUG_MODE)
+        WEBSOCKETLINK = 'wss://192.168.2.40:8180/UniquedocChat';
+    else {
+        if (!LIVE_MODE)
+            WEBSOCKETLINK = 'wss://dev.uniquedoc.com:8180/UniquedocChat';
+        if (LIVE_MODE)
+            WEBSOCKETLINK = 'wss://chat.uniquedoc.com:8180/UniquedocChat';;
+    }
 }
+else {
+    if (DEBUG_MODE)
+        WEBSOCKETLINK = 'ws://192.168.2.40:8181/UniquedocChat';
+    else {
+        if (!LIVE_MODE)
+            WEBSOCKETLINK = 'ws://dev.uniquedoc.com:8181/UniquedocChat';
+        if (LIVE_MODE)
+            WEBSOCKETLINK = 'ws://chat.uniquedoc.com:8181/UniquedocChat';
+    }
+
+}
+
 
 
 LOCALSTORAGEURL = 'https://dev.uniquedoc.com/api';
@@ -65,15 +80,15 @@ var private_message_status = {
 };
 
 user_status = {
-    online : 'CHAT_STATUS_ONLINE',
-    away : 'CHAT_STATUS_AWAY',
-    emergency : 'CHAT_STATUS_EMERGENCY',
-    invisible : 'CHAT_STATUS_INVISIBLE',
-    offline : 'CHAT_STATUS_OFFLINE'
-    
+    online: 'CHAT_STATUS_ONLINE',
+    away: 'CHAT_STATUS_AWAY',
+    emergency: 'CHAT_STATUS_EMERGENCY',
+    invisible: 'CHAT_STATUS_INVISIBLE',
+    offline: 'CHAT_STATUS_OFFLINE'
+
 };
 
-device_state ={
+device_state = {
     pause: 'pause',
     run: 'run'
 };
@@ -92,12 +107,14 @@ var connection;
 var user = {};
 var friendList = {};
 var groupList = {};
-var userDevice={
-    type:'',
-    state:'',
-    addNotification: function(){},
-    removeNotification : function(){}
-    };
+var userDevice = {
+    type: '',
+    state: '',
+    addNotification: function() {
+    },
+    removeNotification: function() {
+    }
+};
 
 mannage_group_conntact = false;
 mannage_group_name = false;
