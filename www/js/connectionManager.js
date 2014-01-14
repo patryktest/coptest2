@@ -16,7 +16,7 @@ function connect() {
     };
 
     connection.onerror = function(error) {
-        onLogout();
+        //onLogout();
         onConnectionError(error);
     };
 
